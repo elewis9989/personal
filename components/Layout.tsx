@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
+import Navbar from './Navbar';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,6 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </Head>
       <div></div>
       <div className='flex flex-col bg-yellow-pastel pt-6 pb-6 min-h-full'>
+        <Navbar />
         <main className='flex-1'>{children}</main>
         <footer className='flex items-center justify-center border-t pt-2'>
           <a href='#' target='_self' rel='noopener noreferrer'>
