@@ -2,15 +2,11 @@ export const navlinks = [
   { name: 'Home', path: '/' },
   {
     name: 'Writing',
-    path: '/',
+    path: '/writing',
   },
   {
     name: 'Coding',
-    path: '/',
-  },
-  {
-    name: 'Blog',
-    path: '/',
+    path: '/coding',
   },
   {
     name: 'Resume',

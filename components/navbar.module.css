@@ -1,0 +1,3 @@
+.navbarLink {
+    @apply md:inline-flex w-full px-3 py-2 items-center justify-center hover:text-green-50;
+}

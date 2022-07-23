@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import { navlinks } from '../utils/data';
+import { FaGithub } from 'react-icons/fa';
+import styles from './navbar.module.css';
 
 export default function Navbar() {
   return (
     <>
       <nav className='flex items-center justify-center flex-wrap p-3'>
-        <button className='inline-flex p-3 hover:bg-green-600 rounded lg:hidden ml-auto hover:text-white outline-none'>
+        <button className='inline-flex p-3 hover:bg-green-600 rounded md:hidden ml-auto hover:text-white outline-none'>
           <svg
             className='w-6 h-6'
             fill='none'
@@ -21,16 +23,19 @@ export default function Navbar() {
             />
           </svg>
         </button>
-        <div className='hidden w-full lg:inline-flex lg:justify-center lg:flex-grow lg:flex-auto'>
-          <div className='lg:inline-flex w-fit lg:items-center flex lg:h-auto lowercase'>
+        <div className='hidden md:inline-flex md:justify-center md:flex-grow md:flex-auto'>
+          <div className='md:inline-flex w-fit md:items-center flex md:h-auto lowercase'>
             {navlinks.map((link, index) => (
               <Link href={link.path} key={index}>
-                <a className='lg:inline-flex w-full px-3 py-2 items-center justify-center hover:text-white '>
-                  {link.name}
-                </a>
+                <a className={styles.navbarLink}>{link.name}</a>
               </Link>
             ))}
           </div>
+        </div>
+        <div className='inline-flex justify-center'>
+          <a href='https://github.com/elewis9989'>
+            <FaGithub />
+          </a>
         </div>
       </nav>
     </>
