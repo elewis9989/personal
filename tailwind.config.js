@@ -9,6 +9,8 @@ module.exports = {
       colors: {
         'yellow-pastel': '#fffde3',
         'pink-pastel': '#ffb8d887',
+        'purple-pastel': '#D4C3F9',
+        'blue-pastel': '#03045E',
       },
     },
   },

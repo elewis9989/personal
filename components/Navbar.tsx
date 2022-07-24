@@ -1,14 +1,21 @@
 import Link from 'next/link';
 import { FaGithub, FaTwitter, FaEnvelope } from 'react-icons/fa';
 import { navlinks } from '../utils/data';
+import { useState } from 'react';
 
 export default function Navbar() {
+  const [navBtnClicked, setNavBtnClicked] = useState(false);
   return (
     <nav className='w-full'>
       <div className='inline-flex justify-between px-4 mx-auto lg:max-w-7xl items-center md:flex md:px-8 w-full'>
         {/* LEFT */}
         <div>
-          <button className='p-3 hover:bg-green-600 rounded md:hidden hover:text-white outline-none'>
+          <button
+            className='p-3 hover:bg-purple-pastel rounded md:hidden hover:text-white outline-none'
+            onClick={() => {
+              setNavBtnClicked(!navBtnClicked);
+            }}
+          >
             <svg
               className='w-6 h-6'
               fill='none'
@@ -32,7 +39,7 @@ export default function Navbar() {
               {navlinks.map((link, index) => (
                 <li
                   key={index}
-                  className=' hover:text-indigo-200 lowercase md:text-xl'
+                  className=' hover:text-indigo-200 transition duration-300 lowercase md:text-xl'
                 >
                   <Link href={link.path}>
                     <a>{link.name}</a>
@@ -44,19 +51,39 @@ export default function Navbar() {
         </div>
         {/* RIGHT */}
         <div className='inline-flex text-xl lg:text-2xl'>
-          <a href='https://github.com/elewis9989' className='lg:px-4 px-2'>
+          <a
+            href='https://github.com/elewis9989'
+            className='lg:px-4 px-2 hover:text-indigo-200 transition duration-300'
+          >
             <FaGithub />
           </a>
           <a
             href='https://twitter.com/emotionldaffodl'
-            className='lg:px-4 px-2'
+            className='lg:px-4 px-2 hover:text-indigo-200 transition duration-300'
           >
             <FaTwitter />
           </a>
-          <a href='mailto:hello@aroze.xyz' className='lg:px-4 px-2'>
+          <a
+            href='mailto:hello@aroze.xyz'
+            className='lg:px-4 px-2 hover:text-indigo-200 transition duration-300'
+          >
             <FaEnvelope />
           </a>
         </div>
+      </div>
+      <div className={`p-8	${!navBtnClicked ? 'hidden' : ''}`}>
+        <ul className=''>
+          {navlinks.map((link, index) => (
+            <li
+              key={index}
+              className='p-3 hover:text-indigo-200 border-l-4 border-double border-blue-pastel transition duration-300 lowercase'
+            >
+              <Link href={link.path}>
+                <a>{link.name}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </nav>
   );
