@@ -11,10 +11,8 @@ export default function Navbar() {
         {/* LEFT */}
         <div>
           <button
-            className={`p-3 rounded md:hidden  outline-none ${
-              navBtnClicked
-                ? 'bg-purple-pastel hover:text-white'
-                : 'hover:text-indigo-200'
+            className={`p-3 rounded md:hidden outline-none ${
+              navBtnClicked ? 'bg-purple-pastel text-white' : ''
             }`}
             onClick={() => {
               setNavBtnClicked(!navBtnClicked);
