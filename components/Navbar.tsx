@@ -54,18 +54,24 @@ export default function Navbar() {
           <a
             href='https://github.com/elewis9989'
             className='lg:px-4 px-2 hover:text-indigo-200 transition duration-300'
+            target='_blank'
+            rel='noreferrer'
           >
             <FaGithub />
           </a>
           <a
             href='https://twitter.com/emotionldaffodl'
             className='lg:px-4 px-2 hover:text-indigo-200 transition duration-300'
+            target='_blank'
+            rel='noreferrer'
           >
             <FaTwitter />
           </a>
           <a
             href='mailto:hello@aroze.xyz'
             className='lg:px-4 px-2 hover:text-indigo-200 transition duration-300'
+            target='_blank'
+            rel='noreferrer'
           >
             <FaEnvelope />
           </a>
