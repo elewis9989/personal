@@ -8,8 +8,4 @@ export const navlinks = [
     name: 'Coding',
     path: '/coding',
   },
-  {
-    name: 'Resume',
-    path: '/',
-  },
 ];

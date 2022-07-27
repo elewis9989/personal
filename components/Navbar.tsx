@@ -48,6 +48,13 @@ export default function Navbar() {
                   </Link>
                 </li>
               ))}
+              <li className=' hover:text-indigo-200 transition duration-300 lowercase md:text-xl'>
+                <Link href='/files/Resume.pdf'>
+                  <a target='_blank' rel='noreferrer'>
+                    Resume
+                  </a>
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
