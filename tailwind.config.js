@@ -11,6 +11,7 @@ module.exports = {
         'pink-pastel': '#ffb8d887',
         'purple-pastel': '#D4C3F9',
         'blue-pastel': '#03045E',
+        'gray-pastel': '#8695A4',
       },
     },
   },
