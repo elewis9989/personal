@@ -17,7 +17,7 @@ export default function Profile() {
         </div>
       </div>
       <div className='flex flex-col items-center justify-center'>
-        <div className='relative min-w-[200px] min-h-[200px] md:mr-20'>
+        <div className='relative min-w-[163px] min-h-[163px] md:mr-20'>
           <Image
             src={profile}
             alt='Picture of the author'
