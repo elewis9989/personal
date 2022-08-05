@@ -8,6 +8,10 @@ export const navlinks = [
     name: 'Coding',
     path: '/coding',
   },
+  {
+    name: 'Dashboard',
+    path: '/dashboard',
+  },
 ];
 
 export const codingProjects = [
