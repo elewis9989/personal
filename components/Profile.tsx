@@ -8,7 +8,7 @@ export default function Profile() {
       <div className='md:ml-9'>
         <div className='lowercase'>
           <p className='md:text-xl pb-4'>hi, i&apos;m roze 👋🏼</p>
-          <div className='md:text-5xl text-3xl'>
+          <div className='md:text-5xl text-2xl'>
             <p>Writer</p>
             <p>Coder</p>
             <p>Goof</p>
@@ -17,7 +17,7 @@ export default function Profile() {
         </div>
       </div>
       <div className='flex flex-col items-center justify-center'>
-        <div className='relative min-w-[163px] min-h-[163px] md:mr-20'>
+        <div className='relative min-w-[100px] min-h-[100px] md:mr-20'>
           <Image
             src={profile}
             alt='Picture of the author'

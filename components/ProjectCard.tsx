@@ -22,7 +22,7 @@ export default function ProjectCard({
       <p className='text-2xl font-bold text-blue-pastel'>{title}</p>
       <div className='md:flex'>
         <div className='flex pt-4'>
-          <p className='bg-blue-pastel text-white font-bold rounded-full py-1 px-3 text-sm'>
+          <p className='bg-blue-pastel text-white font-bold rounded-full py-1 px-3 h-fit text-sm'>
             {year}
           </p>
           <p className='pl-7 text-gray-pastel font-light'>{type}</p>
