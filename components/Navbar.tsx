@@ -86,7 +86,7 @@ export default function Navbar() {
           </a>
         </div>
       </div>
-      <div className={`p-8	${!navBtnClicked ? 'hidden' : ''}`}>
+      <div className={`md:hidden p-8	${!navBtnClicked ? 'hidden' : ''}`}>
         <ul className=''>
           {navlinks.map((link, index) => (
             <li
@@ -98,6 +98,13 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
+          <li className='p-3 hover:text-indigo-200 border-l-4 border-double border-blue-pastel transition duration-300 lowercase'>
+            <Link href='/files/Resume.pdf'>
+              <a target='_blank' rel='noreferrer'>
+                Resume
+              </a>
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>

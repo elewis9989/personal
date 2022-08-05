@@ -1,32 +1,57 @@
 import Image from 'next/image';
 
-export default function ProjectCard() {
+interface ProjectCardProps {
+  title: string;
+  type: string;
+  year: string;
+  src: string;
+  demo: string;
+  description: string;
+}
+
+export default function ProjectCard({
+  title,
+  type,
+  year,
+  src,
+  demo,
+  description,
+}: ProjectCardProps) {
   return (
-    <div className='flex hover:shadow-lg'>
-      <div className='mt-3'>
-        <Image
-          alt='DinDin App Screenshot'
-          src='/dindin.png'
-          layout='intrinsic'
-          width={314}
-          height={235}
-          className='rounded-md'
-        />
-      </div>
-      <div className='px-9'>
-        <p className='text-2xl font-bold text-blue-pastel'>Title</p>
+    <div className='px-9'>
+      <p className='text-2xl font-bold text-blue-pastel'>{title}</p>
+      <div className='md:flex'>
         <div className='flex pt-4'>
           <p className='bg-blue-pastel text-white font-bold rounded-full py-1 px-3 text-sm'>
-            2020
+            {year}
           </p>
-          <p className='pl-7 text-gray-pastel font-light'>Dashboard</p>
+          <p className='pl-7 text-gray-pastel font-light'>{type}</p>
         </div>
-        <p className='pt-4 break-normal max-w-screen-sm	'>
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-          sint. Velit officia consequat duis enim velit mollit. Exercitation
-          veniam consequat sunt nostrud amet.
-        </p>
+        <div className='flex md:pl-7 pt-4'>
+          {src && (
+            <a
+              href={src}
+              target='_blank'
+              rel='noreferrer'
+              className='font-light'
+            >
+              💻 Code
+            </a>
+          )}
+          {demo !== '' && (
+            <a
+              href={demo}
+              target='_blank'
+              rel='noreferrer'
+              className={`font-light ${src ? 'pl-7' : ''}`}
+            >
+              🔗 Demo
+            </a>
+          )}
+        </div>
       </div>
+
+      <p className='pt-4 break-normal max-w-screen-sm	'>{description}</p>
     </div>
   );
 }

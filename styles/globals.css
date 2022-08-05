@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 html {
-    @apply text-blue-pastel
+    @apply text-blue-pastel bg-pink-pastel 
+
   }
