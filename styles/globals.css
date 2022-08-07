@@ -19,6 +19,14 @@ html {
     @apply md:text-2xl text-xl
 }
 
+.header-2 {
+    @apply md:text-xl text-lg
+}
+
+.header-3 {
+    @apply md:text-lg text-base
+}
+
 .paragraph {
     @apply md:text-lg text-base
 }
