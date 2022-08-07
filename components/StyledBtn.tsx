@@ -1,8 +1,9 @@
 interface IStyledBtnProps {
+  title: string;
   site: string;
 }
 
-export default function StyledBtn({ site }: IStyledBtnProps) {
+export default function StyledBtn({ title, site }: IStyledBtnProps) {
   return (
     <a
       className='relative md:px-4 px-2 md:py-2 py-1 group'
@@ -14,7 +15,7 @@ export default function StyledBtn({ site }: IStyledBtnProps) {
       <span className='absolute inset-0 w-full h-full bg-white border-2 border-blue-pastel group-hover:bg-blue-pastel'></span>
       <span className='relative group-hover:text-white md:text-base text-xs'>
         {' '}
-        contact
+        {title}
       </span>
     </a>
   );

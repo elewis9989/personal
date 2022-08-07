@@ -17,7 +17,7 @@ export default function Profile() {
         </div>
       </div>
       <div className='flex flex-col items-center justify-center'>
-        <div className='relative min-w-[100px] min-h-[100px] md:mr-20'>
+        <div className='relative md:min-w-[163px] md:min-h-[163px] min-w-[100px] min-h-[100px] md:mr-20'>
           <Image
             src={profile}
             alt='Picture of the author'
@@ -27,7 +27,7 @@ export default function Profile() {
           />
         </div>
         <div className='md:mr-20 pt-4'>
-          <StyledBtn site='mailto:hello@aroze.xyz' />
+          <StyledBtn title='contact' site='mailto:hello@aroze.xyz' />
         </div>
       </div>
     </div>
