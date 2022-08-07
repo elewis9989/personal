@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
+import { ParsedUrlQuery } from 'querystring';
 import Layout from '../../components/Layout';
 import Title from '../../components/Title';
 import { Post } from '../blog';
@@ -16,10 +17,17 @@ async function getPost(slug: string) {
   return posts[0];
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  if (!context || !context.params) return;
+interface IContextParams extends ParsedUrlQuery {
+  slug: string;
+}
 
-  const post: string = await getPost(context.params.slug);
+interface ISlugPostProps {
+  post: Post;
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { slug } = context.params as IContextParams;
+  const post: string = await getPost(slug);
 
   if (!post) {
     return {
@@ -32,16 +40,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-export const getStaticPaths: GetStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths<IContextParams> = () => {
   return {
     paths: [],
     fallback: true,
   };
 };
 
-const Post: NextPage<{ post: Post }> = ({ post }) => {
-  console.log(post);
-
+const Post: NextPage<ISlugPostProps> = ({ post }) => {
   const router = useRouter();
 
   if (router.isFallback) {
