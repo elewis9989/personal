@@ -19,10 +19,10 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   return (
     <div className='px-9'>
-      <p className='text-2xl font-bold text-blue-pastel'>{title}</p>
+      <p className='header-1 font-bold text-blue-pastel'>{title}</p>
       <div className='md:flex'>
         <div className='flex pt-4'>
-          <p className='bg-blue-pastel text-white font-bold rounded-full py-1 px-3 h-fit text-sm'>
+          <p className='bg-blue-pastel text-white font-bold rounded-full py-1 px-3 h-fit tag'>
             {year}
           </p>
           <p className='pl-7 text-gray-pastel font-light'>{type}</p>
@@ -51,7 +51,9 @@ export default function ProjectCard({
         </div>
       </div>
 
-      <p className='pt-4 break-normal max-w-screen-sm	'>{description}</p>
+      <p className='pt-4 break-normal max-w-screen-sm	paragraph'>
+        {description}
+      </p>
     </div>
   );
 }

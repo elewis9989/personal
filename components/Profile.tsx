@@ -7,13 +7,13 @@ export default function Profile() {
     <div className='flex justify-around pb-20'>
       <div className='md:ml-9'>
         <div className='lowercase'>
-          <p className='md:text-xl pb-4'>hi, i&apos;m roze 👋🏼</p>
-          <div className='md:text-5xl text-2xl'>
+          <p className='subtitle pb-4'>hi, i&apos;m roze 👋🏼</p>
+          <div className='title'>
             <p>Writer</p>
             <p>Coder</p>
             <p>Goof</p>
           </div>
-          <p className='md:text-xl pt-4'>📍 brooklyn, ny</p>
+          <p className='subtitle pt-4'>📍 brooklyn, ny</p>
         </div>
       </div>
       <div className='flex flex-col items-center justify-center'>

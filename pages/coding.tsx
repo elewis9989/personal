@@ -7,7 +7,7 @@ const Coding: NextPage = () => {
   return (
     <Layout>
       <div className='flex flex-col items-center justify-center'>
-        <p className='text-5xl pb-12'>Featured Works 🚀</p>
+        <p className='title pb-12'>Featured Works 🚀</p>
         <div className='flex'>
           <ul>
             {codingProjects.map((project, index) => (

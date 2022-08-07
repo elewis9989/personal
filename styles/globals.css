@@ -6,3 +6,23 @@ html {
     @apply text-blue-pastel bg-pink-pastel 
 
 }
+
+.title {
+    @apply md:text-5xl text-2xl
+}
+
+.subtitle {
+    @apply md:text-xl text-sm
+}
+
+.header-1 {
+    @apply md:text-2xl text-xl
+}
+
+.paragraph {
+    @apply md:text-lg text-base
+}
+
+.tag {
+    @apply md:text-sm text-xs
+}
