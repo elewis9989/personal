@@ -9,8 +9,8 @@ export const navlinks = [
     path: '/coding',
   },
   {
-    name: 'Dashboard',
-    path: '/dashboard',
+    name: 'Blog',
+    path: '/blog',
   },
 ];
 

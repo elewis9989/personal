@@ -1,13 +1,14 @@
 import { NextPage } from 'next';
 import Layout from '../components/Layout';
 import ProjectCard from '../components/ProjectCard';
+import Title from '../components/Title';
 import { codingProjects } from '../utils/data';
 
 const Coding: NextPage = () => {
   return (
     <Layout>
+      <Title title='Featured Works 🚀' />
       <div className='flex flex-col items-center justify-center'>
-        <p className='title pb-12'>Featured Works 🚀</p>
         <div className='flex'>
           <ul>
             {codingProjects.map((project, index) => (

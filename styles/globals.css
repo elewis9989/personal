@@ -8,7 +8,7 @@ html {
 }
 
 .title {
-    @apply md:text-5xl text-2xl
+    @apply md:text-5xl text-2xl md:pb-12 pb-8
 }
 
 .subtitle {
@@ -33,4 +33,17 @@ html {
 
 .tag {
     @apply md:text-sm text-xs
+}
+
+h2 {
+    @apply md:text-xl text-lg font-bold
+}
+
+ol {
+    list-style: auto;
+    padding: revert;
+}
+
+blockquote {
+    margin: revert;
 }
