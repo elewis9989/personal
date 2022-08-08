@@ -2,24 +2,21 @@ import { GetStaticProps, NextPage } from 'next';
 import Layout from '../components/Layout';
 import Title from '../components/Title';
 import Link from 'next/link';
-
-const { CONTENT_API_KEY, BLOG_URL } = process.env;
+import { getPosts } from '../utils/helpers';
+import BlogCard from '../components/BlogCard';
 
 export type Post = {
   title: string;
   slug: string;
-  html: string;
+  custom_excerpt: string;
   feature_image: string;
+  html: string;
+  reading_time: number;
+  published_at: Date;
 };
 
-async function getPosts() {
-  const res: any = await fetch(
-    `${BLOG_URL}/ghost/api/v3/content/posts/?key=${CONTENT_API_KEY}&fields=title,slug,custom_excerpt,feature_image,reading_time`
-  ).then((res) => res.json());
-
-  const posts = res.posts;
-
-  return posts;
+interface IBlogProps {
+  posts: Post[];
 }
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -36,16 +33,32 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const Blog: NextPage<{ posts: Post[] }> = ({ posts }) => {
+const Blog: NextPage<IBlogProps> = ({ posts }) => {
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+
   return (
     <Layout>
       <Title title='Blog ✏️' />
-      <ul>
+      <ul className='xl:px-44'>
         {posts.map((post) => (
           <li key={post.slug}>
-            <Link href='/post/[slug]' as={`/post/${post.slug}`}>
-              <a>{post.title}</a>
-            </Link>
+            <BlogCard
+              title={post.title}
+              slug={post.slug}
+              custom_excerpt={post.custom_excerpt}
+              reading_time={post.reading_time}
+              published_at={post.published_at}
+            />
+            {post.slug !== posts[posts.length - 1].slug && (
+              <div className='relative flex py-5 items-center'>
+                <div className='flex-grow border-t border-gray-300'></div>
+              </div>
+            )}
           </li>
         ))}
       </ul>

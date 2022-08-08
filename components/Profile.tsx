@@ -4,20 +4,22 @@ import StyledBtn from './StyledBtn';
 
 export default function Profile() {
   return (
-    <div className='flex justify-between pb-10 border-b-2	'>
-      <div className='md:ml-9'>
+    <div className='flex justify-between pb-10 border-b-2	xl:px-44'>
+      <div className='max-w-md'>
         <div className='lowercase'>
-          <p className='subtitle pb-4'>hi, i&apos;m roze 👋🏼</p>
-          <div className='title'>
-            <p>Writer</p>
-            <p>Coder</p>
-            <p>Goof</p>
-          </div>
-          <p className='subtitle pt-4'>📍 brooklyn, ny</p>
+          <h1 className='title'>Hey friends 👋🏼</h1>
+          <p className='subtitle pb-4'>
+            i&apos;m roze 🌹 — a <strong>coder</strong>, <strong>writer</strong>
+            , & <strong>goof</strong> residing in brooklyn, ny 📍
+          </p>
+          <p className='subtitle pt-4'>
+            This is my little hub where I share some of musings, projects, and
+            other random fun things.
+          </p>
         </div>
       </div>
       <div className='flex flex-col items-center justify-center'>
-        <div className='relative md:min-w-[163px] md:min-h-[163px] min-w-[100px] min-h-[100px] md:mr-20'>
+        <div className='relative xl:min-w-[225px] xl:min-h-[225px] md:min-w-[163px] md:min-h-[163px] min-w-[100px] min-h-[100px] md:mr-20'>
           <Image
             src={profile}
             alt='Picture of the author'

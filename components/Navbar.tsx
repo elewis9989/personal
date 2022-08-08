@@ -2,11 +2,13 @@ import Link from 'next/link';
 import { FaGithub, FaTwitter, FaEnvelope } from 'react-icons/fa';
 import { navlinks } from '../utils/data';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Navbar() {
   const [navBtnClicked, setNavBtnClicked] = useState(false);
+  const router = useRouter();
   return (
-    <nav className='w-full'>
+    <nav className='w-full sticky top-0 z-50 bg-yellow-pastel md:py-4'>
       <div className='inline-flex justify-between px-4 mx-auto lg:max-w-7xl items-center md:flex md:px-8 w-full'>
         {/* LEFT */}
         <div>
@@ -44,7 +46,9 @@ export default function Navbar() {
                   className=' hover:text-indigo-200 transition duration-300 lowercase md:text-xl'
                 >
                   <Link href={link.path}>
-                    <a>{link.name}</a>
+                    <a className={router.pathname == link.path ? 'active' : ''}>
+                      {link.name}
+                    </a>
                   </Link>
                 </li>
               ))}

@@ -11,13 +11,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar />
-      <main className='flex-1 py-14 lg:px-24 px-8'>
+      <main className='flex-1 pb-14 pt-14 md:pt-28 lg:px-24 px-8'>
         <Profile />
         <div className='pt-14'>{children}</div>
       </main>
       <footer className='flex items-center justify-center md:mx-52 mx-14 border-t pt-2 pb-6'>
         <a href='#' target='_self' rel='noopener noreferrer'>
-          roze 🌹
+          © roze 🌹 {new Date().getFullYear()}
         </a>
       </footer>
     </div>

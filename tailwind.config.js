@@ -13,6 +13,9 @@ module.exports = {
         'blue-pastel': '#372772',
         'gray-pastel': '#8695A4',
       },
+      fontFamily: {
+        Gloria: ['Gloria Hallelujah', 'ui-sans-serif', 'system-ui'],
+      },
     },
   },
   plugins: [],

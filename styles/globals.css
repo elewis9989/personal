@@ -7,12 +7,16 @@ html {
 
 }
 
+a {
+    @apply hover:text-indigo-200 transition duration-300
+}
+
 .title {
     @apply md:text-5xl text-2xl md:pb-12 pb-8
 }
 
 .subtitle {
-    @apply md:text-xl text-sm
+    @apply md:text-2xl text-xl font-Gloria
 }
 
 .header-1 {
@@ -33,6 +37,10 @@ html {
 
 .tag {
     @apply md:text-sm text-xs
+}
+
+.active {
+    @apply underline text-indigo-200
 }
 
 .kg-bookmark-container {

@@ -4,19 +4,8 @@ import { ParsedUrlQuery } from 'querystring';
 import BlogPost from '../../components/BlogPost';
 import Layout from '../../components/Layout';
 import Title from '../../components/Title';
+import { getPost } from '../../utils/helpers';
 import { Post } from '../blog';
-
-const { CONTENT_API_KEY, BLOG_URL } = process.env;
-
-async function getPost(slug: string) {
-  const res: any = await fetch(
-    `${BLOG_URL}/ghost/api/v3/content/posts/slug/${slug}?key=${CONTENT_API_KEY}&fields=title,slug,html`
-  ).then((res) => res.json());
-
-  const posts = res.posts;
-
-  return posts[0];
-}
 
 interface IContextParams extends ParsedUrlQuery {
   slug: string;
