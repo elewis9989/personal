@@ -1,0 +1,16 @@
+.test h2 {
+    @apply md:text-xl text-lg
+}
+
+.test ol {
+    list-style: auto;
+    padding: revert;
+}
+
+.test blockquote {
+    margin: revert;
+}
+
+.test img {
+    height: auto;
+}

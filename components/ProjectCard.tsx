@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-interface ProjectCardProps {
+interface IProjectCardProps {
   title: string;
   type: string;
   year: string;
@@ -16,7 +16,7 @@ export default function ProjectCard({
   src,
   demo,
   description,
-}: ProjectCardProps) {
+}: IProjectCardProps) {
   return (
     <div className='px-9'>
       <p className='header-1 font-bold text-blue-pastel'>{title}</p>

@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
+import BlogPost from '../../components/BlogPost';
 import Layout from '../../components/Layout';
 import Title from '../../components/Title';
 import { Post } from '../blog';
@@ -60,7 +61,7 @@ const Post: NextPage<ISlugPostProps> = ({ post }) => {
   return (
     <Layout>
       <Title title={post.title} />
-      <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+      <BlogPost post={post} />
     </Layout>
   );
 };

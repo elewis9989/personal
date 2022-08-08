@@ -9,13 +9,12 @@ export type Post = {
   title: string;
   slug: string;
   html: string;
+  feature_image: string;
 };
 
 async function getPosts() {
-  // curl -H "Accept-Version: v5.0" "https://demo.ghost.io/ghost/api/content/posts/?key=22444f78447824223cefc48062"
-
   const res: any = await fetch(
-    `${BLOG_URL}/ghost/api/v3/content/posts/?key=${CONTENT_API_KEY}&fields=title,slug,custom_excerpt,reading_time`
+    `${BLOG_URL}/ghost/api/v3/content/posts/?key=${CONTENT_API_KEY}&fields=title,slug,custom_excerpt,feature_image,reading_time`
   ).then((res) => res.json());
 
   const posts = res.posts;

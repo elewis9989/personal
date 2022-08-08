@@ -34,16 +34,3 @@ html {
 .tag {
     @apply md:text-sm text-xs
 }
-
-h2 {
-    @apply md:text-xl text-lg font-bold
-}
-
-ol {
-    list-style: auto;
-    padding: revert;
-}
-
-blockquote {
-    margin: revert;
-}
