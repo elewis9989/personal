@@ -10,7 +10,7 @@ module.exports = {
         'yellow-pastel': '#fffde3',
         'pink-pastel': '#ffb8d887',
         'purple-pastel': '#D4C3F9',
-        'blue-pastel': '#03045E',
+        'blue-pastel': '#372772',
         'gray-pastel': '#8695A4',
       },
     },

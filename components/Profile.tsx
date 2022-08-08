@@ -4,7 +4,7 @@ import StyledBtn from './StyledBtn';
 
 export default function Profile() {
   return (
-    <div className='flex justify-around pb-20'>
+    <div className='flex justify-between pb-10 border-b-2	'>
       <div className='md:ml-9'>
         <div className='lowercase'>
           <p className='subtitle pb-4'>hi, i&apos;m roze 👋🏼</p>

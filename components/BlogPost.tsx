@@ -6,9 +6,11 @@ interface IBlogPostProps {
 }
 export default function BlogPost({ post }: IBlogPostProps) {
   return (
-    <div
-      className={styles.test}
-      dangerouslySetInnerHTML={{ __html: post.html }}
-    ></div>
+    <section className={styles.postFullContent}>
+      <div
+        className={styles.postContent}
+        dangerouslySetInnerHTML={{ __html: post.html }}
+      ></div>
+    </section>
   );
 }
