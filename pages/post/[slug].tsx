@@ -27,6 +27,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: { post },
+    revalidate: 120, // in secs, at most 1 request to ghost cms backend
   };
 };
 

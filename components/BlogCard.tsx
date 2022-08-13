@@ -3,13 +3,12 @@ import Link from 'next/link';
 interface IBlogCardProps {
   title: string;
   slug: string;
-  custom_excerpt: string;
   reading_time: number;
   published_at: Date;
 }
 
 export default function BlogCard(post: IBlogCardProps) {
-  const { title, slug, custom_excerpt, reading_time, published_at } = post;
+  const { title, slug, reading_time, published_at } = post;
 
   const options: Intl.DateTimeFormatOptions = {
     weekday: 'long',

@@ -18,12 +18,13 @@ export default function Profile() {
         <div className='lowercase'>
           <h1 className='title'>Hey friends 👋🏼</h1>
           <p className='subtitle pb-4'>
-            i&apos;m roze 🌹 — a <strong>coder</strong>, <strong>writer</strong>
-            , & <strong>goof</strong> residing in brooklyn, ny 📍
+            i&apos;m roze 🌹 (they/them) — a <strong>coder</strong>,{' '}
+            <strong>writer</strong>, & <strong>certified goof</strong> residing
+            in brooklyn, ny 📍
           </p>
           <p className='subtitle pt-4 pb-8'>
-            This is my little hub where I share some of musings, projects, and
-            other random fun things.
+            This is my little hub where I share some of my musings, projects,
+            and other random fun things.
           </p>
           <div className='relative md:w-40 md:h-12 w-32 h-8 max-w-44 max-h-24'>
             <a

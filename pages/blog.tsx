@@ -1,7 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 import Layout from '../components/Layout';
 import Title from '../components/Title';
-import Link from 'next/link';
 import { getPosts } from '../utils/helpers';
 import BlogCard from '../components/BlogCard';
 
@@ -30,17 +29,11 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: { posts },
+    revalidate: 120, // in secs, at most 1 request to ghost cms backend
   };
 };
 
 const Blog: NextPage<IBlogProps> = ({ posts }) => {
-  const options: Intl.DateTimeFormatOptions = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  };
-
   return (
     <Layout>
       <Title title='Blog ✏️' />
@@ -50,7 +43,6 @@ const Blog: NextPage<IBlogProps> = ({ posts }) => {
             <BlogCard
               title={post.title}
               slug={post.slug}
-              custom_excerpt={post.custom_excerpt}
               reading_time={post.reading_time}
               published_at={post.published_at}
             />

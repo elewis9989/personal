@@ -40,7 +40,7 @@ a {
 }
 
 .active {
-    @apply underline text-indigo-200
+    @apply text-indigo-200
 }
 
 .kg-bookmark-container {
