@@ -6,6 +6,8 @@ import Layout from '../../components/Layout';
 import Title from '../../components/Title';
 import { getPost } from '../../utils/helpers';
 import { Post } from '../blog';
+import BlogViewCount from '../../components/BlogViewCount';
+import { useEffect } from 'react';
 
 interface IContextParams extends ParsedUrlQuery {
   slug: string;
@@ -42,18 +44,58 @@ const Post: NextPage<ISlugPostProps> = ({ post }) => {
   const router = useRouter();
 
   if (router.isFallback) {
-    return (
-      <Layout>
-        <Title title='Loading...' />
-      </Layout>
-    );
+    return <LoadingPage />;
   }
+
+  return <BlogContent post={post} />;
+};
+
+function LoadingPage() {
+  return (
+    <Layout>
+      <Title title='Loading...' />
+    </Layout>
+  );
+}
+
+function BlogContent({ post }: ISlugPostProps) {
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+
+  const registerView = () => {
+    if (post.slug) {
+      fetch(`/api/views/${post.slug}`, {
+        method: 'POST',
+      });
+    }
+  };
+
+  useEffect(() => {
+    registerView();
+  });
+
   return (
     <Layout>
       <Title title={post.title} />
+      <div className='flex items-center justify-center'>
+        <div className='flex pb-6'>
+          <p className='italic px-3 tag'>
+            {new Date(post.published_at).toLocaleDateString('en-US', options)}
+          </p>
+          <BlogViewCount className='italic px-3 tag' slug={post.slug} />
+          <p className='pl-7 text-gray-pastel font-light tag'>
+            {post.reading_time} min
+          </p>
+        </div>
+      </div>
+
       <BlogPost post={post} />
     </Layout>
   );
-};
+}
 
 export default Post;

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import BlogViewCount from './BlogViewCount';
 
 interface IBlogCardProps {
   title: string;
@@ -27,6 +28,7 @@ export default function BlogCard(post: IBlogCardProps) {
           <p className='italic px-3 tag'>
             {new Date(published_at).toLocaleDateString('en-US', options)}
           </p>
+          <BlogViewCount className='italic px-3 tag' slug={slug} />
           <p className='pl-7 text-gray-pastel font-light tag'>
             {reading_time} min
           </p>

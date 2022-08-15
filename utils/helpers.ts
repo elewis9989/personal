@@ -12,7 +12,7 @@ export async function getPosts() {
 
 export async function getPost(slug: string) {
   const res: any = await fetch(
-    `${BLOG_URL}/ghost/api/v3/content/posts/slug/${slug}?key=${CONTENT_API_KEY}&fields=title,slug,html`
+    `${BLOG_URL}/ghost/api/v3/content/posts/slug/${slug}?key=${CONTENT_API_KEY}&fields=title,slug,custom_excerpt,feature_image,reading_time,published_at&formats=html`
   ).then((res) => res.json());
 
   const posts = res.posts;
