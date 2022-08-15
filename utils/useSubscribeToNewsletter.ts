@@ -7,10 +7,10 @@ export function useSubscribeToNewsletter() {
 
   async function subscribe(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setForm({ state: Form.Loading });
+    setForm({ state: Form.Loading, message: '' });
 
     // make a request
-    const res = await fetch('/api/subscribe', {
+    /*const res = await fetch('/api/subscribe', {
       body: JSON.stringify({
         email: inputEl.current!.value,
       }),
@@ -30,7 +30,7 @@ export function useSubscribeToNewsletter() {
       });
 
       return;
-    }
+    }*/
 
     if (inputEl.current?.value !== undefined) {
       inputEl.current.value = '';

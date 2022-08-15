@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <Navbar />
       <main className='flex-1 pb-14 pt-14 md:pt-28 lg:px-24 px-8'>
         <Profile />
-        <div className='pt-14'>{children}</div>
+        <div className='pt-14 pb-8'>{children}</div>
         <Newsletter />
       </main>
       <footer className='flex items-center justify-center md:mx-52 mx-14 border-t pt-2 pb-6'>

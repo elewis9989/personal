@@ -29,11 +29,12 @@ export default function Newsletter() {
         />
         <button
           type='submit'
-          className='flex items-center justify-center absolute right-1 top-[-11px] px-4 w-28 h-8  bg-blue-pastel hover:bg-purple-pastel text-white rounded-md transition duration-300'
+          className='flex items-center justify-center absolute right-2 top-[-11px] sm:top-3 px-2 sm:px-4 sm:w-28 h-8  bg-blue-pastel hover:bg-purple-pastel text-white rounded-md transition duration-300 md:text-base text-xs'
         >
           {form.state === Form.Loading ? <span>loading...</span> : 'Subscribe'}
         </button>
       </form>
+      <p className='italic'>{form.message}</p>
     </div>
   );
 }
