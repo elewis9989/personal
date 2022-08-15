@@ -16,7 +16,7 @@ a {
 }
 
 .subtitle {
-    @apply md:text-2xl text-xl font-Gloria
+    @apply md:text-2xl text-lg font-Gloria
 }
 
 .header-1 {

@@ -12,20 +12,19 @@ export default function BlogCard(post: IBlogCardProps) {
   const { title, slug, reading_time, published_at } = post;
 
   const options: Intl.DateTimeFormatOptions = {
-    weekday: 'long',
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   };
 
   return (
-    <div className='px-9'>
+    <div className='px-6 sm:px-9'>
       <Link href='/post/[slug]' as={`/post/${slug}`}>
         <a className='header-1 font-bold'>{title}</a>
       </Link>
       <div className='md:flex'>
         <div className='flex pt-4'>
-          <p className='italic px-3 tag'>
+          <p className='italic tag'>
             {new Date(published_at).toLocaleDateString('en-US', options)}
           </p>
           <BlogViewCount className='italic px-3 tag' slug={slug} />

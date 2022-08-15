@@ -60,7 +60,6 @@ function LoadingPage() {
 
 function BlogContent({ post }: ISlugPostProps) {
   const options: Intl.DateTimeFormatOptions = {
-    weekday: 'long',
     year: 'numeric',
     month: 'long',
     day: 'numeric',
