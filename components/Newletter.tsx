@@ -5,7 +5,7 @@ export default function Newsletter() {
   const { form, subscribe, inputEl } = useSubscribeToNewsletter();
 
   return (
-    <div className='w-full rounded-lg border p-6 my-4'>
+    <div className='rounded-lg border p-6 my-2 xl:mx-32 2xl:mx-56'>
       <p className='header-2 font-semibold my-2'>
         Subscribe to my newsletter 🔔
       </p>
