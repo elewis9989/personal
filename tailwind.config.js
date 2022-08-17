@@ -16,6 +16,10 @@ module.exports = {
       fontFamily: {
         Gloria: ['Gloria Hallelujah', 'ui-sans-serif', 'system-ui'],
       },
+      screens: {
+        '3xl': '1920px',
+        '4xl': '2560px',
+      },
     },
   },
   plugins: [],

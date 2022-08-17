@@ -79,20 +79,23 @@ function BlogContent({ post }: ISlugPostProps) {
 
   return (
     <Layout>
-      <Title title={post.title} />
-      <div className='flex items-center justify-center'>
-        <div className='flex pb-6'>
-          <p className='italic px-3 tag'>
-            🗓 {new Date(post.published_at).toLocaleDateString('en-US', options)}
-          </p>
-          <BlogViewCount className='italic px-3 tag' slug={post.slug} />
-          <p className='pl-7 text-gray-pastel font-light tag'>
-            {post.reading_time} min
-          </p>
+      <article className='flex flex-col items-start justify-center w-full max-w-2xl mx-auto'>
+        <Title title={post.title} />
+        <div className='flex items-center justify-center'>
+          <div className='flex pb-6'>
+            <p className='italic px-3 tag'>
+              🗓{' '}
+              {new Date(post.published_at).toLocaleDateString('en-US', options)}
+            </p>
+            <BlogViewCount className='italic px-3 tag' slug={post.slug} />
+            <p className='pl-7 text-gray-pastel font-light tag'>
+              {post.reading_time} min
+            </p>
+          </div>
         </div>
-      </div>
 
-      <BlogPost post={post} />
+        <BlogPost post={post} />
+      </article>
     </Layout>
   );
 }

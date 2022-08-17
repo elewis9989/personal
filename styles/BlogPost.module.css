@@ -1,10 +1,9 @@
 .postFullContent {
     position: relative;
-    margin: 0 auto;
     min-height: 230px;
     line-height: 1.6em;
 
-    @apply xl:px-10 2xl:mx-80 2xl:px-64
+    @apply text-lg
 }
 
 .postFullContent a {
@@ -93,6 +92,10 @@
     font-size: 100%;
     vertical-align: baseline;
     @apply mt-3 mb-9
+}
+
+.postContent figure figcaption {
+    @apply font-light text-sm text-center my-4
 }
 
 .postContent em {
