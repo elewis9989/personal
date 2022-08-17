@@ -35,7 +35,7 @@ export default function ProjectCard({
               rel='noreferrer'
               className='font-light'
             >
-              💻 Code
+              💻 Code ↗
             </a>
           )}
           {demo !== '' && (
@@ -45,7 +45,7 @@ export default function ProjectCard({
               rel='noreferrer'
               className={`font-light ${src ? 'pl-7' : ''}`}
             >
-              🔗 Demo
+              🔗 Demo ↗
             </a>
           )}
         </div>

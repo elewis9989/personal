@@ -8,18 +8,41 @@ interface iSeoProps {
   twitterUser?: string;
   image?: string;
   date?: string;
+  twitterCard?: string;
+  twitterLabel?: string;
+  twitterData?: string;
+  url?: string;
 }
 
 export default function Seo(props: iSeoProps) {
-  const { title, type, description, twitterUser, image, date } = props;
+  const {
+    title,
+    type,
+    description,
+    twitterUser,
+    image,
+    date,
+    twitterCard,
+    twitterLabel,
+    twitterData,
+    url,
+  } = props;
   const router = useRouter();
   return (
     <Head>
       <title>{title}</title>
       <meta charSet='utf-8' />
       <link rel='icon' href='/images/favicon.png' />
+      <link
+        rel='canonical'
+        href={'https://aroze.xyz' + (url ? url : router.pathname)}
+        key='canonical'
+      />
       <meta property='og:site_name' content='roze' />
-      <meta property='og:url' content={'https://aroze.xyz' + router.pathname} />
+      <meta
+        property='og:url'
+        content={'https://aroze.xyz' + (url ? url : router.pathname)}
+      />
       <meta property='og:type' content={type} />
       <meta property='og:title' content={title} />
       <meta property='og:description' content={description} />
@@ -39,6 +62,11 @@ export default function Seo(props: iSeoProps) {
       />
       <meta property='twitter:title' content={title} />
       {date && <meta property='article:published_time' content={date} />}
+      {twitterCard && <meta property='twitter:card' content={twitterCard} />}
+      {twitterLabel && (
+        <meta property='twitter:label1' content={twitterLabel} />
+      )}
+      {twitterData && <meta property='twitter:data1' content={twitterData} />}
     </Head>
   );
 }

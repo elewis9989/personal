@@ -18,15 +18,15 @@ export default function Profile() {
       <div className='max-w-md mx-4 xl:mx-6 2xl:mx-36'>
         <div className='lowercase'>
           <h1 className='title'>Hey friends 👋🏼</h1>
-          <p className='subtitle pb-4'>
+          <h2 className='subtitle pb-4'>
             i&apos;m roze 🌹 (they/them) — a <strong>coder</strong>,{' '}
             <strong>writer</strong>, & <strong>certified goof</strong> residing
             in brooklyn, ny 📍
-          </p>
-          <p className='subtitle pt-4 pb-8'>
+          </h2>
+          <h2 className='subtitle pt-4 pb-8'>
             This is my little hub where I share some of my musings, projects,
             and other random fun things.
-          </p>
+          </h2>
           <div className='relative md:w-40 md:h-12 w-32 h-8 max-w-44 max-h-24'>
             <a
               href='https://www.buymeacoffee.com/roze'

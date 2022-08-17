@@ -4,11 +4,10 @@ import { ParsedUrlQuery } from 'querystring';
 import BlogPost from '../../components/BlogPost';
 import Layout from '../../components/Layout';
 import Title from '../../components/Title';
-import { getPost } from '../../utils/helpers';
+import { getPost, getPosts } from '../../utils/helpers';
 import { Post } from '../blog';
 import BlogViewCount from '../../components/BlogViewCount';
 import { useEffect } from 'react';
-import Head from 'next/head';
 import Seo from '../../components/Seo';
 
 interface IContextParams extends ParsedUrlQuery {
@@ -35,11 +34,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-export const getStaticPaths: GetStaticPaths<IContextParams> = () => {
-  return {
-    paths: [],
-    fallback: true,
-  };
+export const getStaticPaths: GetStaticPaths<IContextParams> = async () => {
+  const posts = await getPosts();
+
+  const paths = posts.map((post: Post) => ({
+    params: { slug: post.slug },
+  }));
+
+  return { paths, fallback: 'blocking' };
 };
 
 const Post: NextPage<ISlugPostProps> = ({ post }) => {
@@ -87,6 +89,10 @@ function BlogContent({ post }: ISlugPostProps) {
         description={post.custom_excerpt}
         image={post.feature_image}
         date={post.published_at.toString()}
+        twitterCard='summary_large_image'
+        twitterLabel='Written by'
+        twitterData='roze'
+        url={'/post/' + post.slug}
       />
       <article className='flex flex-col items-start justify-center w-full max-w-2xl mx-auto'>
         <Title title={post.title} />
