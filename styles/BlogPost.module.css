@@ -4,7 +4,7 @@
     min-height: 230px;
     line-height: 1.6em;
 
-    @apply xl:px-44
+    @apply xl:px-10 2xl:mx-80 2xl:px-64
 }
 
 .postFullContent a {

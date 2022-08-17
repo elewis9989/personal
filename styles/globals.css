@@ -12,11 +12,11 @@ a {
 }
 
 .title {
-    @apply md:text-5xl text-2xl md:pb-12 pb-8
+    @apply md:text-5xl text-3xl md:pb-12 pb-8
 }
 
 .subtitle {
-    @apply md:text-2xl text-lg font-Gloria
+    @apply md:text-2xl sm:text-lg text-sm font-Gloria
 }
 
 .header-1 {

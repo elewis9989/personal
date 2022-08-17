@@ -1,14 +1,42 @@
 import Link from 'next/link';
 import { FaGithub, FaTwitter, FaEnvelope } from 'react-icons/fa';
 import { navlinks } from '../utils/data';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 export default function Navbar() {
   const [navBtnClicked, setNavBtnClicked] = useState(false);
+  const [border, setBorder] = useState(false);
   const router = useRouter();
+
+  const styleNavbar = useCallback(() => {
+    if (window) {
+      if (window.scrollY > 66) {
+        setBorder(true);
+      } else {
+        setBorder(false);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', styleNavbar);
+
+      // cleanup function
+      return () => {
+        window.removeEventListener('scroll', styleNavbar);
+      };
+    }
+  }, [styleNavbar]);
+
   return (
-    <nav className='w-full sticky top-0 z-50 bg-yellow-pastel md:py-4'>
+    <nav
+      className={
+        'w-full sticky top-0 z-50 bg-yellow-pastel md:py-4' +
+        (border ? ' backdrop-blur-3xl bg-opacity-75' : '')
+      }
+    >
       <div className='inline-flex justify-between px-4 mx-auto lg:max-w-7xl items-center md:flex md:px-8 w-full'>
         {/* LEFT */}
         <div>

@@ -37,9 +37,9 @@ const Blog: NextPage<IBlogProps> = ({ posts }) => {
   return (
     <Layout>
       <Title title='Blog ✏️' />
-      <ul className='xl:px-44'>
+      <ul className='flex flex-col items-center justify-center'>
         {posts.map((post) => (
-          <li key={post.slug}>
+          <li key={post.slug} className='lg:w-[44rem] md:w-[38rem]'>
             <BlogCard
               title={post.title}
               slug={post.slug}
