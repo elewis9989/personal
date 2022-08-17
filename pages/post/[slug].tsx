@@ -8,6 +8,8 @@ import { getPost } from '../../utils/helpers';
 import { Post } from '../blog';
 import BlogViewCount from '../../components/BlogViewCount';
 import { useEffect } from 'react';
+import Head from 'next/head';
+import Seo from '../../components/Seo';
 
 interface IContextParams extends ParsedUrlQuery {
   slug: string;
@@ -79,6 +81,13 @@ function BlogContent({ post }: ISlugPostProps) {
 
   return (
     <Layout>
+      <Seo
+        title={post.title}
+        type='article'
+        description={post.custom_excerpt}
+        image={post.feature_image}
+        date={post.published_at.toString()}
+      />
       <article className='flex flex-col items-start justify-center w-full max-w-2xl mx-auto'>
         <Title title={post.title} />
         <div className='flex items-center justify-center'>

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import profile from '../public/profile.png';
+import profile from '../public/images/profile.png';
 import StyledBtn from './StyledBtn';
 import { useRouter } from 'next/router';
 import { navlinks } from '../utils/data';

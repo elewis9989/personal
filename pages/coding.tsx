@@ -1,12 +1,14 @@
 import { NextPage } from 'next';
 import Layout from '../components/Layout';
 import ProjectCard from '../components/ProjectCard';
+import Seo from '../components/Seo';
 import Title from '../components/Title';
 import { codingProjects } from '../utils/data';
 
 const Coding: NextPage = () => {
   return (
     <Layout>
+      <Seo title='Coding' type='website' description='A few awesome projects' />
       <Title title='Featured Works 🚀' />
       <div className='flex flex-col items-center justify-center'>
         <div className='flex'>

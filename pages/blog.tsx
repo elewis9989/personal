@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import Title from '../components/Title';
 import { getPosts } from '../utils/helpers';
 import BlogCard from '../components/BlogCard';
+import Seo from '../components/Seo';
 
 export type Post = {
   title: string;
@@ -12,6 +13,8 @@ export type Post = {
   html: string;
   reading_time: number;
   published_at: Date;
+  meta_title: string;
+  meta_description: string;
 };
 
 interface IBlogProps {
@@ -36,6 +39,11 @@ export const getStaticProps: GetStaticProps = async () => {
 const Blog: NextPage<IBlogProps> = ({ posts }) => {
   return (
     <Layout>
+      <Seo
+        title='Blog'
+        type='website'
+        description='Thoughts on the software, life, & society.'
+      />
       <Title title='Blog ✏️' />
       <ul className='flex flex-col items-center justify-center'>
         {posts.map((post) => (
