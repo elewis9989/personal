@@ -25,7 +25,7 @@ export default function BlogCard(post: IBlogCardProps) {
       <div className='md:flex'>
         <div className='flex pt-4'>
           <p className='italic tag'>
-            {new Date(published_at).toLocaleDateString('en-US', options)}
+            🗓 {new Date(published_at).toLocaleDateString('en-US', options)}
           </p>
           <BlogViewCount className='italic px-3 tag' slug={slug} />
           <p className='pl-7 text-gray-pastel font-light tag'>

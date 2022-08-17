@@ -19,5 +19,9 @@ export default function BlogViewCount({
   const { data } = useSWR(`/api/views/${slug}`, fetcher);
   const viewCount = data?.total as number;
 
-  return <p className={className}>{viewCount > 0 ? viewCount : '---'} views</p>;
+  return (
+    <p className={className}>
+      {viewCount > 0 ? '⚡️ ' + viewCount : '---'} views
+    </p>
+  );
 }

@@ -83,7 +83,7 @@ function BlogContent({ post }: ISlugPostProps) {
       <div className='flex items-center justify-center'>
         <div className='flex pb-6'>
           <p className='italic px-3 tag'>
-            {new Date(post.published_at).toLocaleDateString('en-US', options)}
+            🗓 {new Date(post.published_at).toLocaleDateString('en-US', options)}
           </p>
           <BlogViewCount className='italic px-3 tag' slug={post.slug} />
           <p className='pl-7 text-gray-pastel font-light tag'>
