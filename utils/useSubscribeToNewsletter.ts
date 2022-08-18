@@ -38,7 +38,7 @@ export function useSubscribeToNewsletter() {
 
     setForm({
       state: Form.Success,
-      message: `Success! 🎉 You've been added to the list.`,
+      message: `Success! 🎉 Please check your email for verification.`,
     });
   }
 
