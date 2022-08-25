@@ -19,7 +19,7 @@ export default function Profile() {
         <div className='lowercase'>
           <h1 className='title'>Hey friends 👋🏼</h1>
           <h2 className='subtitle pb-4'>
-            i&apos;m roze 🌹 (they/them) — a <strong>coder</strong>,{' '}
+            i&apos;m roze 🌹 (any pronouns) — a <strong>coder</strong>,{' '}
             <strong>writer</strong>, & <strong>certified goof</strong> residing
             in brooklyn, ny 📍
           </h2>
