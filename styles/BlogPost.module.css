@@ -3,7 +3,7 @@
     min-height: 230px;
     line-height: 1.6em;
 
-    @apply text-lg
+    @apply text-lg w-full
 }
 
 .postFullContent a {

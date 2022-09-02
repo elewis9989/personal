@@ -152,3 +152,11 @@ a.kg-bookmark-container {
 .kg-gallery-image {
     flex: 1.5 1 0%;
 }
+
+.kg-card.kg-code-card {
+    @apply w-full
+}
+
+.kg-card.kg-code-card pre {
+    margin: 0;
+}
