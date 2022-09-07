@@ -9,6 +9,13 @@ import { Post } from '../blog';
 import BlogViewCount from '../../components/BlogViewCount';
 import { useEffect } from 'react';
 import Seo from '../../components/Seo';
+import Prism from 'prismjs';
+
+require('prismjs/components/prism-javascript');
+require('prismjs/components/prism-typescript');
+require('prismjs/components/prism-css');
+require('prismjs/components/prism-jsx');
+require('prismjs/components/prism-tsx');
 
 interface IContextParams extends ParsedUrlQuery {
   slug: string;
@@ -79,6 +86,7 @@ function BlogContent({ post }: ISlugPostProps) {
 
   useEffect(() => {
     registerView();
+    Prism.highlightAll();
   });
 
   return (
