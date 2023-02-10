@@ -1,3 +1,5 @@
+'use client';
+
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
 import { NextPageWithLayout } from './page';
 import { classNames } from '../lib/helpers';
