@@ -25,6 +25,7 @@ const Home: NextPageWithLayout = () => {
           width={250}
           height={250}
           alt="Portrait drawing of Roze"
+          priority
         />
       </section>
       <section
