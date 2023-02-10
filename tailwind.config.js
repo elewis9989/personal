@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -16,6 +19,11 @@ module.exports = {
       xl: '1440px',
       '2xl': '1280px',
       '3xl': '1536px',
+    },
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-glory-hallelujah)', ...fontFamily.sans],
+      },
     },
   },
   plugins: [],
