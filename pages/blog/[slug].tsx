@@ -1,12 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from 'next/types';
+import Prism from 'prismjs';
 import { ParsedUrlQuery } from 'querystring';
+import { useEffect } from 'react';
 import PrimaryLayout from '../../components/layouts/primary/PrimaryLayout';
 import { glory } from '../../lib/fonts';
 import { classNames, Post } from '../../lib/helpers';
-import { NextPageWithLayout } from '../page';
 import styles from '../../styles/Post.module.css';
-import Prism from 'prismjs';
-import { useEffect } from 'react';
+import { NextPageWithLayout } from '../page';
 
 require('prismjs/components/prism-javascript');
 require('prismjs/components/prism-typescript');

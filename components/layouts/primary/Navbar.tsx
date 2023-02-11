@@ -1,15 +1,15 @@
 import { Disclosure } from '@headlessui/react';
-import Link from 'next/link';
-import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon';
 import Bars3Icon from '@heroicons/react/24/outline/Bars3Icon';
-import { classNames } from '../../../lib/helpers';
+import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { classNames } from '../../../lib/helpers';
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
   { name: 'Coding', href: '/coding', current: false },
   { name: 'Blog', href: '/blog', current: false },
-  { name: 'Resume', href: '/resume', current: false },
+  { name: 'Resume', href: '/resume.pdf', current: false },
 ];
 
 const Navbar = () => {
@@ -30,6 +30,7 @@ const Navbar = () => {
                         <Link
                           key={item.name}
                           href={item.href}
+                          target={item.name === 'Resume' ? '_blank' : '_self'}
                           className={classNames(
                             'lowercase cursor-pointer hover:opacity-75 font-light text-xl lg:text-2xl',
                             pathname === item.href
