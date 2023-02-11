@@ -13,7 +13,7 @@ const CodingProject: React.FC<ICodingProject> = ({
       <a
         href={url}
         target="_blank"
-        className="text-slate-500 text-3xl font-semibold"
+        className="text-slate-500 text-3xl font-semibold hover:text-slate-400"
         rel="noreferrer"
       >
         {title}

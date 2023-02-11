@@ -26,7 +26,12 @@ const Blog: NextPageWithLayout<IBlog> = ({ posts }) => {
         <ul>
           {posts.map((post, index) => (
             <li key={index} className="py-6">
-              <BlogCard title={post.title} date={post.published_at} />
+              <BlogCard
+                title={post.title}
+                date={post.published_at}
+                length={post.reading_time}
+                slug={post.slug}
+              />
             </li>
           ))}
         </ul>
@@ -39,8 +44,6 @@ export async function getStaticProps() {
   const url = `${BLOG_URL}/ghost/api/v3/content/posts/?key=${CONTENT_API_KEY}&fields=title,slug,custom_excerpt,feature_image,reading_time,published_at,meta_title,meta_description&formats=html`;
   const res = await fetch(url);
   const jsonResult = await res.json();
-
-  console.log(jsonResult);
 
   return {
     props: {
