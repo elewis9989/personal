@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="mb-8 lg:mb-16">
+      <div className="mb-8 lg:mb-16 px-2">
         <Disclosure as="nav">
           {({ open }) => (
             <>

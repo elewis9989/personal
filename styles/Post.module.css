@@ -75,8 +75,6 @@
   color: #e5eff5;
   background: #0e0f11;
   border-radius: 5px;
-
-  @apply min-w-full;
 }
 
 .postContent pre > code {
@@ -89,7 +87,6 @@
   border: 0;
   font: inherit;
   font-size: 100%;
-  vertical-align: baseline;
   @apply mt-3 mb-9;
 }
 

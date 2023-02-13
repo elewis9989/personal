@@ -126,5 +126,5 @@ a.kg-bookmark-container {
 }
 
 .kg-card.kg-code-card pre {
-  margin: 0;
+  @apply m-0;
 }

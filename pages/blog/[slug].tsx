@@ -27,7 +27,7 @@ const Slug: NextPageWithLayout<ISlug> = ({ post }) => {
   }, []);
   return (
     <article className="flex flex-col items-start justify-center w-full max-w-3xl mx-auto">
-      <section className="flex items-center justify-center">
+      <section className="flex items-center justify-center w-full">
         <h1
           className={classNames(
             `${glory.variable} font-sans`,
@@ -37,7 +37,7 @@ const Slug: NextPageWithLayout<ISlug> = ({ post }) => {
           {post.title}
         </h1>
       </section>
-      <section className={styles.postFullContent}>
+      <section className={classNames(styles.postFullContent, 'pt-14')}>
         <div
           className={styles.postContent}
           dangerouslySetInnerHTML={{ __html: post.html }}
