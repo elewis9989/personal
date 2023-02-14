@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next/types';
 import Prism from 'prismjs';
 import { ParsedUrlQuery } from 'querystring';
 import { useEffect } from 'react';
+import Heading from '../../components/Heading';
 import PrimaryLayout from '../../components/layouts/primary/PrimaryLayout';
 import { glory } from '../../lib/fonts';
 import { classNames, Post } from '../../lib/helpers';
@@ -26,24 +27,37 @@ const Slug: NextPageWithLayout<ISlug> = ({ post }) => {
     Prism.highlightAll();
   }, []);
   return (
-    <article className="flex flex-col items-start justify-center w-full max-w-3xl mx-auto">
-      <section className="flex items-center justify-center w-full">
-        <h1
-          className={classNames(
-            `${glory.variable} font-sans`,
-            'text-stone-500 text-4xl lg:text-5xl text-center leading-relaxed lg:leading-relaxed'
-          )}
-        >
-          {post.title}
-        </h1>
-      </section>
-      <section className={classNames(styles.postFullContent, 'pt-14')}>
-        <div
-          className={styles.postContent}
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        ></div>
-      </section>
-    </article>
+    <>
+      <Heading
+        title={post.title}
+        description={post.custom_excerpt}
+        type="article"
+        image={post.feature_image}
+        date={post.published_at.toString()}
+        twitterCard="summary_large_image"
+        twitterLabel="Written by"
+        twitterData="roze"
+        url={'/post/' + post.slug}
+      />
+      <article className="flex flex-col items-start justify-center w-full max-w-3xl mx-auto">
+        <section className="flex items-center justify-center w-full">
+          <h1
+            className={classNames(
+              `${glory.variable} font-sans`,
+              'text-stone-500 text-4xl lg:text-5xl text-center leading-relaxed lg:leading-relaxed'
+            )}
+          >
+            {post.title}
+          </h1>
+        </section>
+        <section className={classNames(styles.postFullContent, 'pt-14')}>
+          <div
+            className={styles.postContent}
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          ></div>
+        </section>
+      </article>
+    </>
   );
 };
 

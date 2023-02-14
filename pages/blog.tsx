@@ -1,4 +1,5 @@
 import BlogCard from '../components/BlogCard';
+import Heading from '../components/Heading';
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
 import { glory } from '../lib/fonts';
 import { classNames, Post } from '../lib/helpers';
@@ -12,6 +13,7 @@ interface IBlog {
 const Blog: NextPageWithLayout<IBlog> = ({ posts }) => {
   return (
     <>
+      <Heading title="roze | blog" description="Roze's blog" type="website" />
       <section className="flex items-center justify-center">
         <h1
           className={classNames(

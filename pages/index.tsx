@@ -1,14 +1,20 @@
 'use client';
 
-import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
-import { NextPageWithLayout } from './page';
-import { classNames } from '../lib/helpers';
-import { glory } from '../lib/fonts';
 import Image from 'next/image';
+import Heading from '../components/Heading';
+import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
+import { glory } from '../lib/fonts';
+import { classNames } from '../lib/helpers';
+import { NextPageWithLayout } from './page';
 
 const Home: NextPageWithLayout = () => {
   return (
     <>
+      <Heading
+        title="roze"
+        description="Roze's little hub of musings, projects, and other fun things"
+        type="website"
+      />
       <section className="flex items-center justify-center">
         <h1
           className={classNames(

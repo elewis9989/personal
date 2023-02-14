@@ -1,4 +1,5 @@
 import CodingProject from '../components/CodingProject';
+import Heading from '../components/Heading';
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
 import { codingProjects } from '../lib/data';
 import { glory } from '../lib/fonts';
@@ -8,6 +9,11 @@ import { NextPageWithLayout } from './page';
 const Coding: NextPageWithLayout = () => {
   return (
     <>
+      <Heading
+        title="roze | coding"
+        description="Roze's featured coding projects"
+        type="website"
+      />
       <section className="flex items-center justify-center">
         <h1
           className={classNames(
