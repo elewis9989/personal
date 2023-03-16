@@ -2,7 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
+html {
+  min-width: 360px;
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -10,121 +14,105 @@ body {
   @apply bg-rose-50;
 }
 
-/* Blog Posts */
-.kg-bookmark-container {
-  color: black;
-  min-height: 148px;
-  border-radius: 3px;
+/* Tailwindcss Typography */
 
-  @apply flex md:flex-row flex-col;
+.prose :is(h1) > a {
+  @apply text-slate-500;
+}
+.prose :is(h1, h2, h3, h4, h5, h6) > a {
+  @apply no-underline;
 }
 
-a.kg-bookmark-container {
-  word-break: break-word;
-  transition: all 0.2s ease-in-out;
-  background-color: transparent;
-  @apply border-2 border-black;
+.prose :not(h1, h2, h3, h4, h5, h6) > a {
+  @apply underline-offset-4;
 }
 
-.kg-bookmark-content {
-  align-items: flex-start;
-  padding: 20px;
-
-  @apply flex flex-grow flex-col justify-start md:order-none order-2;
+.prose ul li {
+  @apply pl-4;
 }
 
-.kg-bookmark-title {
-  line-height: 1.5em;
-  @apply hover:text-indigo-200 transition duration-300 font-semibold text-[#372772];
+.prose ul li span {
+  @apply text-sm;
 }
 
-.kg-bookmark-description {
-  color: black;
-  display: -webkit-box;
-  overflow-y: hidden;
-  margin-top: 12px;
-  max-height: 48px;
-  color: #5d7179;
-  font-size: 12px;
-  line-height: 1.5em;
-  font-weight: 400;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+.prose ul li::marker {
+  @apply font-medium content-['–'];
 }
 
-.kg-bookmark-metadata {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: 14px;
-  color: #5d7179;
-  font-size: 1.5rem;
-  font-weight: 400;
+.prose ul li > ul li::marker {
+  @apply font-bold content-['•'];
 }
 
-.kg-bookmark-icon {
-  margin-right: 8px;
+/* Syntax Highlighting */
 
-  @apply md:w-[22px] md:h-[22px] w-[18px] h-[18px];
+pre {
+  @apply !p-0;
 }
 
-.kg-bookmark-publisher {
-  overflow: hidden;
-  max-width: 240px;
-  line-height: 1.5em;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  @apply text-sm font-light;
+pre::-webkit-scrollbar {
+  height: 0.4rem !important;
 }
 
-.kg-bookmark-thumbnail {
-  position: relative;
-  min-width: 33%;
-  max-height: 100%;
-  @apply min-h-[160px];
+pre::-webkit-scrollbar-track {
+  background: #1e1e24 !important;
+  border-bottom-left-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
 }
 
-.kg-bookmark-thumbnail img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 0 3px 3px 0;
-  -o-object-fit: cover;
-  object-fit: cover;
-  display: block;
+pre::-webkit-scrollbar-thumb {
+  background: #676e95aa !important;
+  border-radius: 6px !important;
 }
 
-.kg-image {
-  max-width: 100%;
+pre > code {
+  @apply !grid !py-4 !font-mono !text-sm !leading-normal;
 }
 
-.kg-gallery-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 1040px;
-  width: 100vw;
+:not(pre) > code {
+  @apply !px-0 !font-mono text-sm !font-normal !tracking-widest;
 }
 
-.kg-gallery-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+:not(pre) :is(h1, h2, h3, h4, h5, h6) code {
+  @apply !font-bold;
 }
 
-.kg-gallery-image:not(:first-of-type) {
-  margin: 0 0 0 0.75em;
+code {
+  counter-reset: line !important;
+  padding: 0 16px !important;
 }
 
-.kg-gallery-image {
-  flex: 1.5 1 0%;
+code[data-line-numbers] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
-.kg-card.kg-code-card {
-  @apply w-full;
+code[data-line-numbers] > .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1.25rem;
+  margin-left: 0.75rem;
+  text-align: right;
+  color: #676e95;
 }
 
-.kg-card.kg-code-card pre {
-  @apply m-0;
+div[data-rehype-pretty-code-title] + pre {
+  @apply !mt-0 !rounded-tl-none;
+}
+
+div[data-rehype-pretty-code-title] {
+  @apply !mt-6 !max-w-max !rounded-t !border-b !border-b-slate-400 !bg-[#2b303b] !px-4 !py-0.5 !text-gray-300 dark:!bg-[#282c34];
+}
+
+.line {
+  @apply !border-l-4 !border-l-transparent !pr-4;
+}
+
+.line.highlighted {
+  @apply !border-l-4 !bg-slate-500 bg-opacity-25;
+}
+
+span.highlighted.word {
+  @apply !rounded !bg-slate-500 bg-opacity-25 !px-2 !py-0.5;
 }

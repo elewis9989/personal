@@ -1,6 +1,5 @@
-import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import 'prismjs/themes/prism-tomorrow.min.css';
+import '../styles/globals.css';
 import { NextPageWithLayout } from './page';
 
 interface AppPropsWithLayout extends AppProps {

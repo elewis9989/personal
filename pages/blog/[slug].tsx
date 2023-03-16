@@ -1,97 +1,112 @@
-import { GetStaticPaths, GetStaticProps } from 'next/types';
-import Prism from 'prismjs';
-import { ParsedUrlQuery } from 'querystring';
-import { useEffect } from 'react';
+import { type GetStaticPaths, type GetStaticProps } from 'next';
+import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
+import Head from 'next/head';
+import { type ParsedUrlQuery } from 'querystring';
 import PrimaryLayout from '../../components/layouts/primary/PrimaryLayout';
+import MDXComponents from '../../components/mdx/MDXComponents';
+import { getAllSlugs, getNoteBySlug } from '../../lib/blog';
 import { glory } from '../../lib/fonts';
-import { classNames, Post } from '../../lib/helpers';
-import styles from '../../styles/Post.module.css';
-import { NextPageWithLayout } from '../page';
+import { classNames } from '../../lib/helpers';
+import { type NextPageWithLayout } from '../page';
 
-require('prismjs/components/prism-javascript');
-require('prismjs/components/prism-typescript');
-require('prismjs/components/prism-css');
-require('prismjs/components/prism-jsx');
-require('prismjs/components/prism-tsx');
-
-const { CONTENT_API_KEY, BLOG_URL } = process.env;
-
-interface ISlug {
-  post: Post;
+interface Props {
+  meta: {
+    slug: string;
+    title: string;
+    excerpt: string;
+    date: string;
+    readTime: string;
+  };
+  source: MDXRemoteSerializeResult;
 }
 
-const Slug: NextPageWithLayout<ISlug> = ({ post }) => {
-  useEffect(() => {
-    // syntax higlighting for blog posts
-    Prism.highlightAll();
-  }, []);
+const Slug: NextPageWithLayout<Props> = ({ meta, source }) => {
   return (
-    <article className="flex flex-col items-start justify-center w-full max-w-3xl mx-auto">
-      <section className="flex items-center justify-center w-full">
+    <div className="mx-auto mb-16 max-w-2xl px-6">
+      <Head>
+        <title>{meta.title}</title>
+      </Head>
+      <header className="mb-12">
         <h1
           className={classNames(
             `${glory.variable} font-sans`,
-            'text-stone-500 text-4xl lg:text-5xl text-center leading-relaxed lg:leading-relaxed'
+            'text-stone-500 text-4xl lg:text-5xl font-bold tracking-tighter'
           )}
         >
-          {post.title}
+          {meta.title}
         </h1>
-      </section>
-      <section className={classNames(styles.postFullContent, 'pt-14')}>
-        <div
-          className={styles.postContent}
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        ></div>
-      </section>
-    </article>
+        <div className="flex items-center gap-2 text-sm font-light text-zinc-400">
+          <div className="flex grow flex-col sm:flex-row sm:items-center sm:justify-between mt-4">
+            <div>
+              <span>Roze</span> /{' '}
+              <time>
+                {new Date(meta.date).toLocaleDateString('en-us', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })}
+              </time>
+            </div>
+            <div className="flex items-center gap-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 0 24 24"
+                width="24px"
+                fill="#0178df"
+                className="hidden sm:inline"
+              >
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+              </svg>
+              <span>{meta.readTime}</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      <article className="prose max-w-none">
+        <MDXRemote {...source} components={MDXComponents} />
+      </article>
+    </div>
   );
-};
-
-interface IContextParams extends ParsedUrlQuery {
-  slug: string;
-}
-
-// Retrieve Blog Post
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { slug } = context.params as IContextParams;
-  const url = `${BLOG_URL}/ghost/api/v3/content/posts/slug/${slug}?key=${CONTENT_API_KEY}&fields=title,slug,custom_excerpt,feature_image,reading_time,published_at,meta_title,meta_description&formats=html`;
-
-  const res = await fetch(url);
-  const jsonResult = await res.json();
-
-  let post;
-  if (jsonResult.posts && jsonResult.posts.length > 0) {
-    post = jsonResult.posts[0];
-  }
-
-  if (!post) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: { post },
-    revalidate: 120, // in secs, at most 1 request to ghost cms backend
-  };
-};
-
-// Since the page has Dynamic Routes and uses getStaticProps, it needs to define a list of paths to be statically generated
-export const getStaticPaths: GetStaticPaths<IContextParams> = async () => {
-  const url = `${BLOG_URL}/ghost/api/v3/content/posts/?key=${CONTENT_API_KEY}&fields=title,slug,custom_excerpt,feature_image,reading_time,published_at,meta_title,meta_description&formats=html`;
-  const res = await fetch(url);
-  const jsonResult = await res.json();
-  const posts = jsonResult.posts;
-
-  const paths = posts.map((post: Post) => ({
-    params: { slug: post.slug },
-  }));
-
-  return { paths, fallback: 'blocking' };
 };
 
 export default Slug;
 
 Slug.getLayout = (page) => {
   return <PrimaryLayout>{page}</PrimaryLayout>;
+};
+
+interface IContextParams extends ParsedUrlQuery {
+  slug: string;
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { slug } = context.params as IContextParams;
+  const { meta, source } = await getNoteBySlug(slug);
+
+  if (!source) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      meta,
+      source,
+    },
+    revalidate: 120,
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const slugs = getAllSlugs();
+  const paths = slugs.map((slug) => ({ params: { slug } }));
+
+  return {
+    paths,
+    fallback: 'blocking',
+  };
 };
