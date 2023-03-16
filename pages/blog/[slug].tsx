@@ -66,7 +66,7 @@ const Slug: NextPageWithLayout<Props> = ({ meta, source }) => {
         </div>
       </header>
       <article className="prose max-w-none">
-        <MDXRemote {...source} components={MDXComponents} />
+        <MDXRemote {...source} components={MDXComponents as any} />
       </article>
     </div>
   );
