@@ -3,12 +3,13 @@
 import Image from 'next/image';
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
 import PageTitle from '../components/PageTitle';
+import PageTransition from '../components/PageTransition';
 import { classNames } from '../lib/helpers';
 import { NextPageWithLayout } from './page';
 
 const Home: NextPageWithLayout = () => {
   return (
-    <>
+    <PageTransition>
       <section className="flex items-center justify-center">
         <PageTitle title="Hello, Friend 👋🏼" />
       </section>
@@ -40,7 +41,7 @@ const Home: NextPageWithLayout = () => {
           and other fun things.
         </p>
       </section>
-    </>
+    </PageTransition>
   );
 };
 

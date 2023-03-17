@@ -1,12 +1,13 @@
 import CodingProject from '../components/CodingProject';
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
 import PageTitle from '../components/PageTitle';
+import PageTransition from '../components/PageTransition';
 import { codingProjects } from '../lib/data';
 import { NextPageWithLayout } from './page';
 
 const Coding: NextPageWithLayout = () => {
   return (
-    <>
+    <PageTransition>
       <section className="flex items-center justify-center">
         <PageTitle title="Featured Works" />
       </section>
@@ -23,7 +24,7 @@ const Coding: NextPageWithLayout = () => {
           ))}
         </ul>
       </section>
-    </>
+    </PageTransition>
   );
 };
 

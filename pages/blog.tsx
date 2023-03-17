@@ -2,6 +2,7 @@ import { type GetStaticProps } from 'next';
 import BlogCard from '../components/BlogCard';
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
 import PageTitle from '../components/PageTitle';
+import PageTransition from '../components/PageTransition';
 import { getAllPostsMeta } from '../lib/blog';
 import { PostMeta } from '../lib/helpers';
 import { NextPageWithLayout } from './page';
@@ -12,7 +13,7 @@ interface IBlog {
 
 const Blog: NextPageWithLayout<IBlog> = ({ posts }) => {
   return (
-    <>
+    <PageTransition>
       <section className="flex items-center justify-center">
         <PageTitle title="Blog" />
       </section>
@@ -25,7 +26,7 @@ const Blog: NextPageWithLayout<IBlog> = ({ posts }) => {
           ))}
         </ul>
       </section>
-    </>
+    </PageTransition>
   );
 };
 
