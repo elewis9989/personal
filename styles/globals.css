@@ -8,10 +8,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-
-  @apply bg-rose-50;
+  @apply bg-rose-50 mx-auto w-full max-w-4xl px-2 lg:px-0;
 }
 
 /* Tailwindcss Typography */

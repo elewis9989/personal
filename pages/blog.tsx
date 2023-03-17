@@ -1,37 +1,26 @@
+import { type GetStaticProps } from 'next';
 import BlogCard from '../components/BlogCard';
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
-import { glory } from '../lib/fonts';
-import { classNames, Post } from '../lib/helpers';
+import PageTitle from '../components/PageTitle';
+import { getAllPostsMeta } from '../lib/blog';
+import { PostMeta } from '../lib/helpers';
 import { NextPageWithLayout } from './page';
-const { CONTENT_API_KEY, BLOG_URL } = process.env;
 
 interface IBlog {
-  posts: Post[];
+  posts: PostMeta[];
 }
 
 const Blog: NextPageWithLayout<IBlog> = ({ posts }) => {
   return (
     <>
       <section className="flex items-center justify-center">
-        <h1
-          className={classNames(
-            `${glory.variable} font-sans`,
-            'text-stone-500 text-4xl lg:text-5xl text-center'
-          )}
-        >
-          blog ✍️
-        </h1>
+        <PageTitle title="Blog" />
       </section>
       <section className="flex items-center justify-center pt-14">
-        <ul>
+        <ul className="space-y-8">
           {posts.map((post, index) => (
-            <li key={index} className="py-6">
-              <BlogCard
-                title={post.title}
-                date={post.published_at}
-                length={post.reading_time}
-                slug={post.slug}
-              />
+            <li key={index} className="">
+              <BlogCard meta={post} />
             </li>
           ))}
         </ul>
@@ -40,21 +29,19 @@ const Blog: NextPageWithLayout<IBlog> = ({ posts }) => {
   );
 };
 
-export async function getStaticProps() {
-  const url = `${BLOG_URL}/ghost/api/v3/content/posts/?key=${CONTENT_API_KEY}&fields=title,slug,custom_excerpt,feature_image,reading_time,published_at,meta_title,meta_description&formats=html`;
-  const res = await fetch(url);
-  const jsonResult = await res.json();
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = getAllPostsMeta();
 
   return {
     props: {
-      posts: jsonResult.posts,
+      posts,
     },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 10 seconds
     revalidate: 120, // In seconds
   };
-}
+};
 
 export default Blog;
 

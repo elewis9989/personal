@@ -4,19 +4,12 @@ import Head from 'next/head';
 import { type ParsedUrlQuery } from 'querystring';
 import PrimaryLayout from '../../components/layouts/primary/PrimaryLayout';
 import MDXComponents from '../../components/mdx/MDXComponents';
-import { getAllSlugs, getNoteBySlug } from '../../lib/blog';
-import { glory } from '../../lib/fonts';
-import { classNames } from '../../lib/helpers';
+import { getAllSlugs, getPostBySlug } from '../../lib/blog';
+import { classNames, type PostMeta } from '../../lib/helpers';
 import { type NextPageWithLayout } from '../page';
 
 interface Props {
-  meta: {
-    slug: string;
-    title: string;
-    excerpt: string;
-    date: string;
-    readTime: string;
-  };
+  meta: PostMeta;
   source: MDXRemoteSerializeResult;
 }
 
@@ -29,13 +22,12 @@ const Slug: NextPageWithLayout<Props> = ({ meta, source }) => {
       <header className="mb-12">
         <h1
           className={classNames(
-            `${glory.variable} font-sans`,
-            'text-stone-500 text-4xl lg:text-5xl font-bold tracking-tighter'
+            'text-black text-4xl lg:text-5xl font-bold tracking-tighter'
           )}
         >
           {meta.title}
         </h1>
-        <div className="flex items-center gap-2 text-sm font-light text-zinc-400">
+        <div className="flex items-center gap-2 text-sm font-normal text-zinc-500">
           <div className="flex grow flex-col sm:flex-row sm:items-center sm:justify-between mt-4">
             <div>
               <span>Roze</span> /{' '}
@@ -53,10 +45,8 @@ const Slug: NextPageWithLayout<Props> = ({ meta, source }) => {
                 height="24px"
                 viewBox="0 0 24 24"
                 width="24px"
-                fill="#0178df"
-                className="hidden sm:inline"
+                className="hidden sm:inline stroke-violet-500"
               >
-                <path d="M0 0h24v24H0z" fill="none" />
                 <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
                 <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
               </svg>
@@ -65,7 +55,7 @@ const Slug: NextPageWithLayout<Props> = ({ meta, source }) => {
           </div>
         </div>
       </header>
-      <article className="prose max-w-none">
+      <article className={classNames('prose max-w-none')}>
         <MDXRemote {...source} components={MDXComponents as any} />
       </article>
     </div>
@@ -84,7 +74,7 @@ interface IContextParams extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as IContextParams;
-  const { meta, source } = await getNoteBySlug(slug);
+  const { meta, source } = await getPostBySlug(slug);
 
   if (!source) {
     return {

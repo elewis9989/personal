@@ -1,27 +1,19 @@
 import CodingProject from '../components/CodingProject';
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
+import PageTitle from '../components/PageTitle';
 import { codingProjects } from '../lib/data';
-import { glory } from '../lib/fonts';
-import { classNames } from '../lib/helpers';
 import { NextPageWithLayout } from './page';
 
 const Coding: NextPageWithLayout = () => {
   return (
     <>
       <section className="flex items-center justify-center">
-        <h1
-          className={classNames(
-            `${glory.variable} font-sans`,
-            'text-stone-500 text-4xl lg:text-5xl text-center'
-          )}
-        >
-          featured works 🚀
-        </h1>
+        <PageTitle title="Featured Works" />
       </section>
       <section className="flex items-center mx-auto max-w-2xl pt-14">
-        <ul>
+        <ul className="space-y-8">
           {codingProjects.map((project, index) => (
-            <li key={index} className="py-6">
+            <li key={index} className="">
               <CodingProject
                 title={project.title}
                 description={project.description}

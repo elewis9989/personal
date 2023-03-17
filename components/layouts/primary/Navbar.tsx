@@ -22,8 +22,8 @@ const Navbar = () => {
         <Disclosure as="nav">
           {({ open }) => (
             <>
-              <div className="mx-auto max-w-7xl">
-                <div className="flex h-16 items-center justify-between">
+              <div className="mx-auto ">
+                <div className="flex h-16 items-center md:justify-evenly justify-start">
                   <div className="hidden md:block">
                     <div className="flex items-baseline space-x-8">
                       {navigation.map((item) => (
@@ -32,10 +32,10 @@ const Navbar = () => {
                           href={item.href}
                           target={item.name === 'Resume' ? '_blank' : '_self'}
                           className={classNames(
-                            'lowercase cursor-pointer hover:opacity-75 font-light text-xl lg:text-2xl',
+                            'cursor-pointer font-extralight text-xl lg:text-2xl text-black p-1',
                             pathname === item.href
-                              ? 'font-medium underline underline-offset-4 text-stone-400'
-                              : 'text-stone-600'
+                              ? 'bg-emerald-300 '
+                              : 'hover:underline hover:underline-offset-4'
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
@@ -46,7 +46,7 @@ const Navbar = () => {
                   </div>
                   <div className="-mr-2 flex md:hidden">
                     {/* Mobile menu button */}
-                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-logo-color p-2 text-stone-600 hover:bg-steel-color hover:text-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300">
+                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-logo-color p-2 hover:bg-steel-color hover:text-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
                         <XMarkIcon
@@ -62,7 +62,7 @@ const Navbar = () => {
                     </Disclosure.Button>
                   </div>
                   <div className="">
-                    <div className="flex items-center md:ml-6 text-stone-600">
+                    <div className="flex items-center md:ml-6 text-black">
                       {/* Github */}
                       <a
                         href="https://github.com/elewis9989"
@@ -131,7 +131,12 @@ const Navbar = () => {
                       key={item.name}
                       as="a"
                       href={item.href}
-                      className="text-stone-600 hover:text-stone-400 block px-3 py-2 rounded-md lowercase"
+                      className={classNames(
+                        'block font-extralight text-xl lg:text-2xl text-black px-3 py-2',
+                        pathname === item.href
+                          ? 'bg-emerald-300 '
+                          : 'hover:underline hover:underline-offset-4'
+                      )}
                       aria-current={item.current ? 'page' : undefined}
                     >
                       {item.name}

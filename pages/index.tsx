@@ -1,23 +1,16 @@
 'use client';
 
-import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
-import { NextPageWithLayout } from './page';
-import { classNames } from '../lib/helpers';
-import { glory } from '../lib/fonts';
 import Image from 'next/image';
+import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
+import PageTitle from '../components/PageTitle';
+import { classNames } from '../lib/helpers';
+import { NextPageWithLayout } from './page';
 
 const Home: NextPageWithLayout = () => {
   return (
     <>
       <section className="flex items-center justify-center">
-        <h1
-          className={classNames(
-            `${glory.variable} font-sans`,
-            'text-stone-500 text-4xl lg:text-5xl text-center'
-          )}
-        >
-          hello, friend 👋🏼
-        </h1>
+        <PageTitle title="Hello, Friend 👋🏼" />
       </section>
       <section className="flex items-center justify-center py-8">
         <Image
@@ -25,21 +18,25 @@ const Home: NextPageWithLayout = () => {
           width={250}
           height={250}
           alt="Portrait drawing of Roze"
+          style={{
+            width: '50%',
+            height: 'auto',
+          }}
           priority
         />
       </section>
       <section
         className={classNames(
-          `${glory.variable} font-sans`,
-          'flex flex-col items-center justify-center text-xl lg:text-2xl text-stone-600 max-w-2xl mx-auto'
+          'flex flex-col items-center justify-center text-xl lg:text-2xl text-black max-w-2xl mx-auto space-y-6'
         )}
       >
-        <p className="py-3 lg:py-8">
-          i&apos;m roze 🌹 (any pronouns) — a coder, writer, & content creator
-          residing in brooklyn, ny 📍
+        <p className="">
+          I&apos;m <span className="text-sky-800 font-semibold">roze</span> 🌹
+          (any pronouns) — a coder, writer, & content creator residing in
+          Brooklyn, NY 📍
         </p>
-        <p className="py-3 lg:py-8">
-          welcome to my little hub where i share some of my musings, projects,
+        <p className="">
+          Welcome to my little hub where I share some of my musings, projects,
           and other fun things.
         </p>
       </section>

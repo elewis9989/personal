@@ -24,7 +24,7 @@ const prettyCodeOptions = {
   },
 };
 
-export const getNoteBySlug = async (slug: string) => {
+export const getPostBySlug = async (slug: string) => {
   const realSlug = slug.replace(/\.mdx$/, '');
   const filePath = path.join(rootDirectory, `${realSlug}.mdx`);
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
@@ -53,8 +53,38 @@ export const getNoteBySlug = async (slug: string) => {
   return post;
 };
 
+export const getPostMeta = (slug: string) => {
+  const realSlug = slug.replace(/\.mdx$/, '');
+  const filePath = path.join(rootDirectory, `${realSlug}.mdx`);
+  const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
+
+  const { data, content } = matter(fileContent);
+  const readTime = readingTime(content).text;
+
+  const { title, excerpt, date } = data;
+
+  const meta = {
+    title,
+    excerpt,
+    date,
+    slug: realSlug,
+    readTime,
+  };
+
+  return meta;
+};
+
 export const getAllSlugs = () => {
   const files = fs.readdirSync(rootDirectory);
   const slugs = files.map((file) => file.replace(/\.mdx$/, ''));
   return slugs;
+};
+
+export const getAllPostsMeta = () => {
+  const files = fs.readdirSync(rootDirectory);
+  const posts = files
+    .map((file) => getPostMeta(file))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  return posts;
 };

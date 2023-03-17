@@ -24,6 +24,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-glory-hallelujah)', ...fontFamily.sans],
+        serif: ['var(--font-titillium-web)', ...fontFamily.serif],
       },
     },
   },

@@ -1,31 +1,31 @@
 import Link from 'next/link';
+import { type PostMeta } from '../lib/helpers';
 
 interface IBlogCard {
-  title: string;
-  date: Date;
-  length: number;
-  slug: string;
+  meta: PostMeta;
 }
-const BlogCard: React.FC<IBlogCard> = ({ title, date, length, slug }) => {
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  };
+const BlogCard: React.FC<IBlogCard> = ({ meta }) => {
+  const { slug, title, excerpt, date, readTime } = meta;
 
   return (
     <div>
       <Link
         href={`/blog/${encodeURIComponent(slug)}`}
-        className="text-slate-500 text-3xl font-semibold hover:text-slate-400"
+        className="text-sky-800 text-3xl font-semibold hover:text-sky-600"
       >
         {title}
       </Link>
+      <p>{excerpt}</p>
       <div className="flex items-center py-2">
         <p className="mr-6">
-          🗓 {new Date(date).toLocaleDateString('en-US', options)}
+          🗓{' '}
+          {new Date(date).toLocaleDateString('en-us', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+          })}
         </p>
-        <p>{length} min</p>
+        <p>{readTime} min</p>
       </div>
     </div>
   );
