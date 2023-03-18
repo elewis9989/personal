@@ -1,16 +1,17 @@
 import Link from 'next/link';
-import { type PostMeta } from '../lib/helpers';
+import readingTime from 'reading-time';
+import { Post } from '../.contentlayer/generated';
 
 interface IBlogCard {
-  meta: PostMeta;
+  post: Post;
 }
-const BlogCard: React.FC<IBlogCard> = ({ meta }) => {
-  const { slug, title, excerpt, date, readTime } = meta;
+const BlogCard: React.FC<IBlogCard> = ({ post }) => {
+  const { url, title, excerpt, date } = post;
 
   return (
     <div>
       <Link
-        href={`/blog/${encodeURIComponent(slug)}`}
+        href={url}
         className="text-sky-800 text-3xl font-semibold hover:text-sky-600"
       >
         {title}
@@ -25,7 +26,7 @@ const BlogCard: React.FC<IBlogCard> = ({ meta }) => {
             day: 'numeric',
           })}
         </p>
-        <p>{readTime} min</p>
+        <p>{readingTime(post.body.raw).text} min</p>
       </div>
     </div>
   );

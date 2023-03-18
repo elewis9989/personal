@@ -1,14 +1,13 @@
+import { allPosts, Post } from 'contentlayer/generated';
 import { type GetStaticProps } from 'next';
 import BlogCard from '../components/BlogCard';
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
 import PageTitle from '../components/PageTitle';
 import PageTransition from '../components/PageTransition';
-import { getAllPostsMeta } from '../lib/blog';
-import { PostMeta } from '../lib/helpers';
 import { NextPageWithLayout } from './page';
 
 interface IBlog {
-  posts: PostMeta[];
+  posts: Post[];
 }
 
 const Blog: NextPageWithLayout<IBlog> = ({ posts }) => {
@@ -21,7 +20,7 @@ const Blog: NextPageWithLayout<IBlog> = ({ posts }) => {
         <ul className="space-y-8">
           {posts.map((post, index) => (
             <li key={index} className="">
-              <BlogCard meta={post} />
+              <BlogCard post={post} />
             </li>
           ))}
         </ul>
@@ -31,16 +30,14 @@ const Blog: NextPageWithLayout<IBlog> = ({ posts }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = getAllPostsMeta();
+  const posts = allPosts.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
   return {
     props: {
       posts,
     },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 10 seconds
-    revalidate: 120, // In seconds
   };
 };
 
