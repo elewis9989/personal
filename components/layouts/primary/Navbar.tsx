@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="mb-8 lg:mb-16 px-2">
+      <div className="mb-8 md:mb-16 px-2">
         <Disclosure as="nav">
           {({ open }) => (
             <>
@@ -32,7 +32,7 @@ const Navbar = () => {
                           href={item.href}
                           target={item.name === 'Resume' ? '_blank' : '_self'}
                           className={classNames(
-                            'cursor-pointer font-extralight text-xl lg:text-2xl text-black p-1',
+                            'cursor-pointer font-extralight text-xl md:text-2xl text-black p-1',
                             pathname === item.href
                               ? 'bg-emerald-300 '
                               : 'hover:underline hover:underline-offset-4'
@@ -132,7 +132,7 @@ const Navbar = () => {
                       as="a"
                       href={item.href}
                       className={classNames(
-                        'block font-extralight text-xl lg:text-2xl text-black px-3 py-2',
+                        'block font-extralight text-xl md:text-2xl text-black px-3 py-2',
                         pathname === item.href
                           ? 'bg-emerald-300 '
                           : 'hover:underline hover:underline-offset-4'

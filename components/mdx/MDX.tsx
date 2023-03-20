@@ -12,7 +12,7 @@ const MDX: React.FC<Props> = ({ code }) => {
   const Component = useMDXComponent(code);
 
   return (
-    <article className="prose max-w-none">
+    <article className="prose max-w-none text-xl md:text-2xl">
       <Component components={{ ...components }} />
     </article>
   );

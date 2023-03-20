@@ -19,6 +19,7 @@ const Coding: NextPageWithLayout = () => {
                 title={project.title}
                 description={project.description}
                 url={project.url}
+                tags={project.tags}
               />
             </li>
           ))}

@@ -28,14 +28,21 @@ const Home: NextPageWithLayout = () => {
       </section>
       <section
         className={classNames(
-          'flex flex-col items-center justify-center text-xl lg:text-2xl text-black max-w-2xl mx-auto space-y-6'
+          'flex flex-col items-center text-2xl lg:text-4xl text-black max-w-2xl mx-auto space-y-6'
         )}
       >
-        <p className="">
-          I&apos;m <span className="text-sky-800 font-semibold">roze</span> 🌹
-          (any pronouns) — a coder, writer, & content creator residing in
-          Brooklyn, NY 📍
+        <p className="leading-relaxed">
+          I&apos;m{' '}
+          <span className="text-sky-800 font-semibold bg-yellow-200 italic px-3">
+            Roze
+          </span>{' '}
+          🌹 (any pronouns) — a {}
+          <span className="border-b-4 border-b-green-300">coder</span>,{' '}
+          <span className="border-b-4 border-b-blue-300">writer</span>, &{' '}
+          <span className="border-b-4 border-b-red-300">content creator</span>{' '}
+          residing in Brooklyn, NY 📍
         </p>
+
         <p className="">
           Welcome to my little hub where I share some of my musings, projects,
           and other fun things.

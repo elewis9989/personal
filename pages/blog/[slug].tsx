@@ -5,8 +5,8 @@ import readingTime from 'reading-time';
 import { allPosts, Post } from '../../.contentlayer/generated';
 import PrimaryLayout from '../../components/layouts/primary/PrimaryLayout';
 import MDX from '../../components/mdx/MDX';
+import PageTitle from '../../components/PageTitle';
 import PageTransition from '../../components/PageTransition';
-import { classNames } from '../../lib/helpers';
 import { type NextPageWithLayout } from '../page';
 
 interface Props {
@@ -16,19 +16,13 @@ interface Props {
 const Slug: NextPageWithLayout<Props> = ({ post }) => {
   return (
     <PageTransition>
-      <div className="mx-auto mb-16 max-w-2xl px-6">
+      <div className="mx-auto mb-16 max-w-4xl px-6">
         <Head>
-          <title>{post.title}</title>
+          <title></title>
         </Head>
         <header className="mb-12">
-          <h1
-            className={classNames(
-              'text-black text-4xl lg:text-5xl font-bold tracking-tighter'
-            )}
-          >
-            {post.title}
-          </h1>
-          <div className="flex items-center gap-2 text-sm font-normal text-zinc-500">
+          <PageTitle title={post.title} />
+          <div className="flex items-center gap-2 text-xl font-normal text-zinc-500">
             <div className="flex grow flex-col sm:flex-row sm:items-center sm:justify-between mt-4">
               <div>
                 <span>Roze</span> /{' '}
@@ -46,7 +40,7 @@ const Slug: NextPageWithLayout<Props> = ({ post }) => {
                   height="24px"
                   viewBox="0 0 24 24"
                   width="24px"
-                  className="hidden sm:inline stroke-violet-500"
+                  className="hidden sm:inline stroke-purple-300"
                 >
                   <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
                   <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />

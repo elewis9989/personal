@@ -12,12 +12,12 @@ const BlogCard: React.FC<IBlogCard> = ({ post }) => {
     <div>
       <Link
         href={url}
-        className="text-sky-800 text-3xl font-semibold hover:text-sky-600"
+        className="text-sky-800 text-3xl md:text-5xl font-semibold hover:text-sky-600"
       >
         {title}
       </Link>
-      <p>{excerpt}</p>
-      <div className="flex items-center py-2">
+      <p className="text-xl md:text-2xl">{excerpt}</p>
+      <div className="flex items-center py-2 text-lg md:text-xl">
         <p className="mr-6">
           🗓{' '}
           {new Date(date).toLocaleDateString('en-us', {

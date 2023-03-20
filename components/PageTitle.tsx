@@ -7,7 +7,7 @@ const PageTitle: React.FC<Props> = ({ title }) => {
   return (
     <h1
       className={classNames(
-        'text-black text-4xl lg:text-5xl text-center font-semibold tracking-wide'
+        'text-black text-5xl md:text-7xl text-center font-semibold tracking-wide'
       )}
     >
       {title}
