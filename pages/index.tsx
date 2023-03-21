@@ -1,54 +1,57 @@
 'use client';
 
 import Image from 'next/image';
-import Heading from '../components/Heading';
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
-import { glory } from '../lib/fonts';
+import Metadata from '../components/Metadata';
+import PageTitle from '../components/PageTitle';
+import PageTransition from '../components/PageTransition';
 import { classNames } from '../lib/helpers';
 import { NextPageWithLayout } from './page';
 
 const Home: NextPageWithLayout = () => {
   return (
     <>
-      <Heading
-        title="roze"
-        description="Roze's little hub of musings, projects, and other fun things"
-        type="website"
-      />
-      <section className="flex items-center justify-center">
-        <h1
+      <Metadata />
+      <PageTransition>
+        <section className="flex items-center justify-center">
+          <PageTitle title="Hello, Friend 👋🏼" />
+        </section>
+        <section className="flex items-center justify-center py-8">
+          <Image
+            src="./profile.svg"
+            width={250}
+            height={250}
+            alt="Portrait drawing of Roze"
+            style={{
+              width: '50%',
+              height: 'auto',
+            }}
+            priority
+          />
+        </section>
+        <section
           className={classNames(
-            `${glory.variable} font-sans`,
-            'text-stone-500 text-4xl lg:text-5xl text-center'
+            'flex flex-col items-center text-2xl lg:text-4xl text-black max-w-2xl mx-auto space-y-6'
           )}
         >
-          hello, friend 👋🏼
-        </h1>
-      </section>
-      <section className="flex items-center justify-center py-8">
-        <Image
-          src="./profile.svg"
-          width={250}
-          height={250}
-          alt="Portrait drawing of Roze"
-          priority
-        />
-      </section>
-      <section
-        className={classNames(
-          `${glory.variable} font-sans`,
-          'flex flex-col items-center justify-center text-xl lg:text-2xl text-stone-600 max-w-2xl mx-auto'
-        )}
-      >
-        <p className="py-3 lg:py-8">
-          i&apos;m roze 🌹 (any pronouns) — a coder, writer, & content creator
-          residing in brooklyn, ny 📍
-        </p>
-        <p className="py-3 lg:py-8">
-          welcome to my little hub where i share some of my musings, projects,
-          and other fun things.
-        </p>
-      </section>
+          <p className="leading-relaxed">
+            I&apos;m{' '}
+            <span className="text-sky-800 font-semibold bg-yellow-200 italic px-3">
+              Roze
+            </span>{' '}
+            🌹 (any pronouns) — a {}
+            <span className="border-b-4 border-b-green-300">coder</span>,{' '}
+            <span className="border-b-4 border-b-blue-300">writer</span>, &{' '}
+            <span className="border-b-4 border-b-red-300">content creator</span>{' '}
+            residing in Brooklyn, NY 📍
+          </p>
+
+          <p className="">
+            Welcome to my little hub where I share some of my musings, projects,
+            and other fun things.
+          </p>
+        </section>
+      </PageTransition>
     </>
   );
 };

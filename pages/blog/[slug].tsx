@@ -1,82 +1,82 @@
-import { GetStaticPaths, GetStaticProps } from 'next/types';
-import Prism from 'prismjs';
-import { ParsedUrlQuery } from 'querystring';
-import { useEffect } from 'react';
-import Heading from '../../components/Heading';
+import { type GetStaticPaths, type GetStaticProps } from 'next';
+import { type ParsedUrlQuery } from 'querystring';
+import readingTime from 'reading-time';
+import { allPosts, Post } from '../../.contentlayer/generated';
 import PrimaryLayout from '../../components/layouts/primary/PrimaryLayout';
-import { glory } from '../../lib/fonts';
-import { classNames, Post } from '../../lib/helpers';
-import styles from '../../styles/Post.module.css';
-import { NextPageWithLayout } from '../page';
+import MDX from '../../components/mdx/MDX';
+import Metadata, { MetaType } from '../../components/Metadata';
+import PageTitle from '../../components/PageTitle';
+import PageTransition from '../../components/PageTransition';
+import { type NextPageWithLayout } from '../page';
 
-require('prismjs/components/prism-javascript');
-require('prismjs/components/prism-typescript');
-require('prismjs/components/prism-css');
-require('prismjs/components/prism-jsx');
-require('prismjs/components/prism-tsx');
-
-const { CONTENT_API_KEY, BLOG_URL } = process.env;
-
-interface ISlug {
+interface Props {
   post: Post;
 }
 
-const Slug: NextPageWithLayout<ISlug> = ({ post }) => {
-  useEffect(() => {
-    // syntax higlighting for blog posts
-    Prism.highlightAll();
-  }, []);
+const Slug: NextPageWithLayout<Props> = ({ post }) => {
+  const meta: MetaType = {
+    title: post.title + ' | Roze',
+    description: post.excerpt,
+    path: post.url,
+    image: post.coverImage,
+    type: 'article',
+    date: post.date,
+  };
   return (
     <>
-      <Heading
-        title={post.title}
-        description={post.custom_excerpt}
-        type="article"
-        image={post.feature_image}
-        date={post.published_at.toString()}
-        twitterCard="summary_large_image"
-        twitterLabel="Written by"
-        twitterData="roze"
-        url={'/post/' + post.slug}
-      />
-      <article className="flex flex-col items-start justify-center w-full max-w-3xl mx-auto">
-        <section className="flex items-center justify-center w-full">
-          <h1
-            className={classNames(
-              `${glory.variable} font-sans`,
-              'text-stone-500 text-4xl lg:text-5xl text-center leading-relaxed lg:leading-relaxed'
-            )}
-          >
-            {post.title}
-          </h1>
-        </section>
-        <section className={classNames(styles.postFullContent, 'pt-14')}>
-          <div
-            className={styles.postContent}
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          ></div>
-        </section>
-      </article>
+      <Metadata meta={meta} />
+      <PageTransition>
+        <div className="mx-auto mb-16 max-w-4xl px-6">
+          <header className="mb-12">
+            <PageTitle title={post.title} />
+            <div className="flex items-center gap-2 md:text-lg font-normal text-zinc-500">
+              <div className="flex grow flex-col sm:flex-row sm:items-center sm:justify-between mt-4">
+                <div>
+                  <span>Roze</span> /{' '}
+                  <time>
+                    {new Date(post.date).toLocaleDateString('en-us', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    })}
+                  </time>
+                </div>
+                <div className="flex items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 0 24 24"
+                    width="24px"
+                    className="hidden sm:inline stroke-purple-300"
+                  >
+                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                    <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                  </svg>
+                  <span>{readingTime(post.body.raw).text}</span>
+                </div>
+              </div>
+            </div>
+          </header>
+          <MDX code={post.body.code} />
+        </div>
+      </PageTransition>
     </>
   );
+};
+
+export default Slug;
+
+Slug.getLayout = (page) => {
+  return <PrimaryLayout>{page}</PrimaryLayout>;
 };
 
 interface IContextParams extends ParsedUrlQuery {
   slug: string;
 }
 
-// Retrieve Blog Post
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = (context) => {
   const { slug } = context.params as IContextParams;
-  const url = `${BLOG_URL}/ghost/api/v3/content/posts/slug/${slug}?key=${CONTENT_API_KEY}&fields=title,slug,custom_excerpt,feature_image,reading_time,published_at,meta_title,meta_description&formats=html`;
-
-  const res = await fetch(url);
-  const jsonResult = await res.json();
-
-  let post;
-  if (jsonResult.posts && jsonResult.posts.length > 0) {
-    post = jsonResult.posts[0];
-  }
+  const post = allPosts.find((post) => post.slug === slug);
 
   if (!post) {
     return {
@@ -85,27 +85,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   return {
-    props: { post },
-    revalidate: 120, // in secs, at most 1 request to ghost cms backend
+    props: {
+      post,
+    },
   };
 };
 
-// Since the page has Dynamic Routes and uses getStaticProps, it needs to define a list of paths to be statically generated
-export const getStaticPaths: GetStaticPaths<IContextParams> = async () => {
-  const url = `${BLOG_URL}/ghost/api/v3/content/posts/?key=${CONTENT_API_KEY}&fields=title,slug,custom_excerpt,feature_image,reading_time,published_at,meta_title,meta_description&formats=html`;
-  const res = await fetch(url);
-  const jsonResult = await res.json();
-  const posts = jsonResult.posts;
+export const getStaticPaths: GetStaticPaths = () => {
+  const paths = allPosts.map((post) => post.url);
 
-  const paths = posts.map((post: Post) => ({
-    params: { slug: post.slug },
-  }));
-
-  return { paths, fallback: 'blocking' };
-};
-
-export default Slug;
-
-Slug.getLayout = (page) => {
-  return <PrimaryLayout>{page}</PrimaryLayout>;
+  return {
+    paths,
+    fallback: false,
+  };
 };

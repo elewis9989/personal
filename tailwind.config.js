@@ -4,8 +4,9 @@ const { fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './content/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   // Ensure these match with .storybook/preview.js
   theme: {
@@ -23,8 +24,9 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-glory-hallelujah)', ...fontFamily.sans],
+        serif: ['var(--font-titillium-web)', ...fontFamily.serif],
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
