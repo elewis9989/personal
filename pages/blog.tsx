@@ -2,6 +2,7 @@ import { allPosts, Post } from 'contentlayer/generated';
 import { type GetStaticProps } from 'next';
 import BlogCard from '../components/BlogCard';
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
+import Metadata from '../components/Metadata';
 import PageTitle from '../components/PageTitle';
 import PageTransition from '../components/PageTransition';
 import { NextPageWithLayout } from './page';
@@ -11,21 +12,29 @@ interface IBlog {
 }
 
 const Blog: NextPageWithLayout<IBlog> = ({ posts }) => {
+  const meta = {
+    title: 'Blog | Roze',
+    description: 'Blog Posts',
+  };
+
   return (
-    <PageTransition>
-      <section className="flex items-center justify-center">
-        <PageTitle title="Blog" />
-      </section>
-      <section className="flex items-center justify-center pt-14">
-        <ul className="space-y-8">
-          {posts.map((post, index) => (
-            <li key={index} className="">
-              <BlogCard post={post} />
-            </li>
-          ))}
-        </ul>
-      </section>
-    </PageTransition>
+    <>
+      <Metadata meta={meta} />
+      <PageTransition>
+        <section className="flex items-center justify-center">
+          <PageTitle title="Blog" />
+        </section>
+        <section className="flex items-center justify-center pt-14">
+          <ul className="space-y-8">
+            {posts.map((post, index) => (
+              <li key={index} className="">
+                <BlogCard post={post} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      </PageTransition>
+    </>
   );
 };
 
