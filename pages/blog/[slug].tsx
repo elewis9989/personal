@@ -29,7 +29,7 @@ const Slug: NextPageWithLayout<Props> = ({ post }) => {
         <div className="mx-auto mb-16 max-w-4xl px-6">
           <header className="mb-12">
             <PageTitle title={post.title} />
-            <div className="flex items-center gap-2 text-xl font-normal text-zinc-500">
+            <div className="flex items-center gap-2 md:text-lg font-normal text-zinc-500">
               <div className="flex grow flex-col sm:flex-row sm:items-center sm:justify-between mt-4">
                 <div>
                   <span>Roze</span> /{' '}
@@ -74,7 +74,7 @@ interface IContextParams extends ParsedUrlQuery {
   slug: string;
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = (context) => {
   const { slug } = context.params as IContextParams;
   const post = allPosts.find((post) => post.slug === slug);
 
@@ -91,7 +91,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = () => {
   const paths = allPosts.map((post) => post.url);
 
   return {

@@ -30,11 +30,11 @@ body {
 }
 
 .prose ul li::marker {
-  @apply font-medium content-['–'];
+  @apply font-medium;
 }
 
 .prose ul li > ul li::marker {
-  @apply font-bold content-['•'];
+  @apply font-bold content-['–'];
 }
 
 /* Syntax Highlighting */
@@ -63,7 +63,7 @@ pre > code {
 }
 
 :not(pre) > code {
-  @apply !px-0 !font-mono text-sm !font-normal !tracking-widest;
+  @apply !px-0 !font-mono text-sm !font-normal !tracking-wider;
 }
 
 :not(pre) :is(h1, h2, h3, h4, h5, h6) code {
@@ -96,7 +96,7 @@ div[data-rehype-pretty-code-title] + pre {
 }
 
 div[data-rehype-pretty-code-title] {
-  @apply !mt-6 !max-w-max !rounded-t !border-b !border-b-slate-400 !bg-[#2b303b] !px-4 !py-0.5 !text-gray-300 dark:!bg-[#282c34];
+  @apply !mt-6 !max-w-max !rounded-t !border-b !border-b-slate-400 !bg-[#2b303b] !px-4 !py-0.5 !text-gray-300 dark:!bg-[#282c34] text-base;
 }
 
 .line {

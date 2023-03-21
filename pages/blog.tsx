@@ -27,7 +27,10 @@ const Blog: NextPageWithLayout<IBlog> = ({ posts }) => {
         <section className="flex items-center justify-center pt-14">
           <ul className="space-y-8">
             {posts.map((post, index) => (
-              <li key={index} className="">
+              <li
+                key={index}
+                className="flex flex-row items-center justify-center"
+              >
                 <BlogCard post={post} />
               </li>
             ))}
@@ -38,7 +41,7 @@ const Blog: NextPageWithLayout<IBlog> = ({ posts }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = () => {
   const posts = allPosts.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
