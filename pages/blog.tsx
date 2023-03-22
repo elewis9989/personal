@@ -24,13 +24,10 @@ const Blog: NextPageWithLayout<IBlog> = ({ posts }) => {
         <section className="flex items-center justify-center">
           <PageTitle title="Blog" />
         </section>
-        <section className="flex items-center justify-center pt-14">
-          <ul className="space-y-8">
+        <section className="flex justify-center pt-14">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {posts.map((post, index) => (
-              <li
-                key={index}
-                className="flex flex-row items-center justify-center"
-              >
+              <li key={index} className="max-w-md">
                 <BlogCard post={post} />
               </li>
             ))}
