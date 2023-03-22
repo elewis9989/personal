@@ -17,8 +17,8 @@ const BlogCard: React.FC<IBlogCard> = ({ post }) => {
             <Image
               alt="Cover image"
               src={post.coverImage}
-              width={1640}
-              height={920}
+              width={1200}
+              height={504}
               className=""
             />
           </div>
