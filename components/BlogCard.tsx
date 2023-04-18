@@ -24,13 +24,13 @@ const BlogCard: React.FC<IBlogCard> = ({ post }) => {
           </div>
         ) : null}
         <div className="p-4">
-          <div className="h-20">
-            <h1 className="text-sky-800 text-xl md:text-2xl font-semibold">
+          <div className="h-28">
+            <h1 className="text-sky-800 text-xl md:text-2xl font-semibold line-clamp-2">
               {title}
             </h1>
-            <p className="text-lg md:text-xl truncate">{excerpt}</p>
+            <p className="text-lg md:text-xl line-clamp-2">{excerpt}</p>
           </div>
-          <div className="flex items-center py-2 text-base md:text-lg">
+          <div className="flex items-center py-2 mt-2 text-base md:text-lg">
             <p className="mr-6">
               🗓{' '}
               {new Date(date).toLocaleDateString('en-us', {
