@@ -39,7 +39,7 @@ const BlogCard: React.FC<IBlogCard> = ({ post }) => {
                 day: 'numeric',
               })}
             </p>
-            <p>{readingTime(post.body.raw).text} min</p>
+            <p>{readingTime(post.body.raw).text}</p>
           </div>
         </div>
       </Link>
