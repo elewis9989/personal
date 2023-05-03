@@ -10,7 +10,7 @@ export const codingProjects = [
   {
     title: 'DinDin',
     year: '2019',
-    url: 'https://github.com/elewis9989/DinDin',
+    url: 'https://github.com/itsRoze/DinDin',
     description:
       "A mobile application that helps organize dinner parties and allows attendees to accept or decline as they'd like",
     tags: ['React Native', 'Expo', 'Firebase'],

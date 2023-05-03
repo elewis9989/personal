@@ -65,7 +65,7 @@ const Navbar = () => {
                     <div className="flex items-center md:ml-6 text-black">
                       {/* Github */}
                       <a
-                        href="https://github.com/elewis9989"
+                        href="https://github.com/itsRoze"
                         target="_blank"
                         rel="noreferrer"
                       >
