@@ -11,5 +11,11 @@
   },
   "dependencies": {
     "astro": "^3.0.7"
+  },
+  "devDependencies": {
+    "@vanilla-extract/css": "^1.13.0",
+    "@vanilla-extract/vite-plugin": "^3.9.0",
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.0"
   }
 }
