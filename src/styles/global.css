@@ -1,0 +1,8 @@
+html,
+body {
+  @apply h-full w-full font-inter font-normal flex flex-col;
+}
+
+body main {
+  @apply flex-1;
+}
