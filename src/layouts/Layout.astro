@@ -1,14 +1,17 @@
 ---
 import "@styles/global.css";
 import { Navigation } from "@components/navigation/navigation.tsx";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
   background: string;
   navColor: string;
+  navUnderline: string;
 }
 
-const { title, background, navColor } = Astro.props;
+const { title, background, navColor, navUnderline } = Astro.props;
+console.log(Astro.url);
 ---
 
 <!doctype html>
@@ -32,9 +35,15 @@ const { title, background, navColor } = Astro.props;
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body class={background}>
-    <Navigation client:load textColor={navColor} />
+    <Navigation
+      client:load
+      textColor={navColor}
+      underlineColor={navUnderline}
+      pathname={Astro.url.pathname}
+    />
     <main><slot /></main>
   </body>
 </html>
