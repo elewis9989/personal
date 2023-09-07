@@ -1,0 +1,60 @@
+#scroll-container {
+  overflow: hidden;
+  max-width: 100%;
+  margin: auto;
+
+  @apply h-full;
+}
+
+.wrap-container {
+  position: absolute;
+  left: 0;
+  max-height: 200px;
+  width: 100vw;
+  margin: auto;
+  overflow: auto;
+  mask: url(#masking);
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.5, rgba(0, 0, 0, 1)),
+    color-stop(1, rgba(0, 0, 0, 0))
+  );
+
+  ul {
+    position: relative;
+    transition: transform 0.3s;
+    top: 50px;
+  }
+
+  ul,
+  ul li {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  ul li {
+    height: 50px;
+    line-height: 50px;
+    transition: transform 0.3s;
+    overflow: hidden;
+
+    &:last-of-type {
+      padding-bottom: 50px;
+    }
+
+    &.active {
+      .item {
+        transform: scale(1.9);
+      }
+    }
+  }
+
+  ul li .item {
+    position: relative;
+    transition: transform 200ms;
+    display: inline-block;
+  }
+}
