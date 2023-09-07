@@ -1,56 +1,50 @@
-.carousel {
-  /* perspective: 100%; */
-  transform-style: preserve-3d;
-
-  @apply relative lg:w-1/2 lg:h-1/2 w-1/2 h-1/2;
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20vh);
+  visibility: hidden;
+  transition:
+    opacity 1200ms ease-out,
+    transform 600ms ease-out,
+    visibility 1200ms ease-out;
+  will-change: opacity, transform, visibility;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
 }
 
-.card-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transform: rotateY(calc(var(--offset) * 50deg))
-    scaleY(calc(1 + var(--abs-offset) * -0.4))
-    translateZ(calc(var(--abs-offset) * -30rem))
-    translateX(calc(var(--direction) * -5rem));
-  filter: blur(calc(var(--abs-offset) * 1rem));
-  transition: all 0.3s ease-out;
+/**
+ * Custom Scrollbar
+ */
 
-  @media screen and (min-width: 1024px) {
-    transform: rotateY(calc(var(--offset) * 50deg))
-      scaleY(calc(1 + var(--abs-offset) * -0.4))
-      translateZ(calc(var(--abs-offset) * -30rem))
-      translateX(calc(var(--direction) * -5rem));
-  }
+/* width */
+.custom-scroll::-webkit-scrollbar {
+  width: 5px;
 }
 
-.card {
-  background-color: hsl(100deg, 40%, calc(100% - var(--abs-offset) * 50%));
-
-  @apply w-full h-full p-8 rounded-2xl text-justify transition-all duration-300 ease-out;
-}
-.card h2 {
-  @apply text-center lg:text-4xl font-light m-0 mb-7;
-}
-.card p,
-.card h2 {
-  transition: all 0.3s ease-out;
-  opacity: var(--active);
-
-  @apply truncate;
+/* Track */
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.nav {
-  @apply text-black absolute flex items-center justify-center top-1/2 z-10 cursor-pointer select-none;
+/* Handle */
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 10px;
+}
 
-  svg {
-    @apply w-10 h-auto;
-  }
+/* Handle on hover */
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
-.nav.left {
-  transform: translateX(-100%) translatey(-50%);
+
+.custom-scroll::-webkit-scrollbar-track-piece:end {
+  background: transparent;
+  margin-bottom: 10px;
 }
-.nav.right {
-  right: 0;
-  transform: translateX(100%) translatey(-50%);
+
+.custom-scroll::-webkit-scrollbar-track-piece:start {
+  background: transparent;
+  margin-top: 10px;
 }

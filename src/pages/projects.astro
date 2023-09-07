@@ -10,7 +10,14 @@ import { ProjectList } from "@components/projects";
   navColor="text-white"
   navUnderline="bg-white"
 >
-  <section class="flex justify-center items-center h-full w-full">
+  <header>
+    <h1
+      class="text-white text-5xl lg:text-8xl uppercase text-center py-4 lg:py-8"
+    >
+      Featured Projects
+    </h1>
+  </header>
+  <section class="flex flex-col justify-center items-center w-full lg:h-full">
     <ProjectList client:load />
   </section>
 </Layout>

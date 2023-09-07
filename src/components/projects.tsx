@@ -1,153 +1,115 @@
-import { For, type Component, createSignal } from "solid-js";
-
-const MAX_VISIBILITY = 3;
+import {
+  For,
+  type Component,
+  createSignal,
+  createEffect,
+  type JSX,
+} from "solid-js";
 
 export const ProjectList: Component = () => {
-  return <Carousel />;
-};
-
-interface ICard {
-  title: string;
-  description: string;
-}
-
-const Card: Component<ICard> = (props) => {
   return (
-    <div class="card">
-      <h2>{props.title}</h2>
-      <p>{props.description}</p>
-    </div>
-  );
-};
-
-const Carousel: Component = (props) => {
-  const [active, setActive] = createSignal(2);
-
-  return (
-    <div class="carousel">
-      {active() > 0 && (
-        <button
-          class="nav left"
-          onclick={() => {
-            console.log("hi");
-            setActive(active() - 1);
-          }}
-        >
-          <ChevronLeft />
-        </button>
-      )}
-
+    <div class="w-full lg:h-[50rem] h-[40rem] overflow-y-scroll custom-scroll">
       <For each={projects}>
-        {(project, i) => (
-          <div
-            class="card-container"
-            style={{
-              "--active": i() === active() ? 1 : 0,
-              "--offset": (active() - i()) / 3,
-              "--direction": Math.sign(active() - i()),
-              "--abs-offset": Math.abs(active() - i()) / 3,
-              "pointer-events": active() === i() ? "auto" : "none",
-              opacity: Math.abs(active() - i()) >= MAX_VISIBILITY ? "0" : "1",
-              display:
-                Math.abs(active() - i()) > MAX_VISIBILITY ? "none" : "block",
-            }}
-          >
-            <Card title={project.title} description={project.description} />
-          </div>
+        {(project) => (
+          <FadeIn>
+            <div class="p-10 flex flex-col lg:flex-row items-center h-full">
+              <div class="flex flex-col items-center lg:w-1/2 w-full">
+                <h2 class="lg:text-6xl text-4xl font-light py-1">
+                  {project.title}
+                </h2>
+                <img src="/images/projects/modal.png" class="w-full h-auto" />
+              </div>
+              <div class="flex flex-col lg:w-1/2 w-full lg:gap-20 gap-10">
+                <p class="lg:text-4xl lg:text-left text-center text-2xl font-extralight ">
+                  {project.description}
+                </p>
+                <p class="lg:text-3xl lg:text-left text-center text-2xl font-medium">
+                  {project.year}
+                </p>
+              </div>
+            </div>
+          </FadeIn>
         )}
       </For>
-      {active() < projects.length - 1 && (
-        <button
-          class="nav right"
-          onclick={() => {
-            console.log("hi");
-            setActive(active() + 1);
-          }}
-        >
-          <ChevronRight />
-        </button>
-      )}
     </div>
   );
 };
 
-const ChevronLeft = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="lucide lucide-chevron-left"
-    >
-      <path d="m15 18-6-6 6-6" />
-    </svg>
-  );
-};
+interface IFadeIn {
+  children: JSX.Element | JSX.Element[];
+}
 
-const ChevronRight = () => {
+const FadeIn: Component<IFadeIn> = (props) => {
+  const [visible, setVisible] = createSignal(false);
+  let domRef: HTMLDivElement | undefined;
+
+  createEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => setVisible(entry.isIntersecting));
+    });
+    observer.observe(domRef as Element);
+  });
+
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="lucide lucide-chevron-right"
+    <div
+      ref={domRef}
+      class={`fade-in-section ${visible() ? "is-visible" : ""}`}
     >
-      <path d="m9 18 6-6-6-6" />
-    </svg>
+      {props.children}
+    </div>
   );
 };
 
 const projects = [
   {
-    title: "Project 1",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    title: "Modal",
+    description:
+      "An opinionated productivity manager, helping you achieve your goals by breaking down tasks and prioritizing them effectively",
+    year: "2021",
   },
   {
     title: "Project 2",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    year: "2021",
   },
   {
     title: "Project 3",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    year: "2021",
   },
   {
     title: "Project 4",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    year: "2021",
   },
   {
     title: "Project 5",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    year: "2021",
   },
   {
     title: "Project 6",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    year: "2021",
   },
   {
     title: "Project 7",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    year: "2021",
   },
   {
     title: "Project 8",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    year: "2021",
   },
   {
     title: "Project 9",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    year: "2021",
   },
   {
     title: "Project 10",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    year: "2021",
   },
 ];
