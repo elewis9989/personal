@@ -1,60 +1,56 @@
-#scroll-container {
-  overflow: hidden;
-  max-width: 100%;
-  margin: auto;
+.carousel {
+  /* perspective: 100%; */
+  transform-style: preserve-3d;
 
-  @apply h-full;
+  @apply relative lg:w-1/2 lg:h-1/2 w-1/2 h-1/2;
 }
 
-.wrap-container {
+.card-container {
   position: absolute;
-  left: 0;
-  max-height: 200px;
-  width: 100vw;
-  margin: auto;
-  overflow: auto;
-  mask: url(#masking);
-  -webkit-mask-image: -webkit-gradient(
-    linear,
-    left bottom,
-    left top,
-    color-stop(0.5, rgba(0, 0, 0, 1)),
-    color-stop(1, rgba(0, 0, 0, 0))
-  );
+  width: 100%;
+  height: 100%;
+  transform: rotateY(calc(var(--offset) * 50deg))
+    scaleY(calc(1 + var(--abs-offset) * -0.4))
+    translateZ(calc(var(--abs-offset) * -30rem))
+    translateX(calc(var(--direction) * -5rem));
+  filter: blur(calc(var(--abs-offset) * 1rem));
+  transition: all 0.3s ease-out;
 
-  ul {
-    position: relative;
-    transition: transform 0.3s;
-    top: 50px;
+  @media screen and (min-width: 1024px) {
+    transform: rotateY(calc(var(--offset) * 50deg))
+      scaleY(calc(1 + var(--abs-offset) * -0.4))
+      translateZ(calc(var(--abs-offset) * -30rem))
+      translateX(calc(var(--direction) * -5rem));
   }
+}
 
-  ul,
-  ul li {
-    margin: 0;
-    padding: 0;
-    text-align: center;
+.card {
+  background-color: hsl(100deg, 40%, calc(100% - var(--abs-offset) * 50%));
+
+  @apply w-full h-full p-8 rounded-2xl text-justify transition-all duration-300 ease-out;
+}
+.card h2 {
+  @apply text-center lg:text-4xl font-light m-0 mb-7;
+}
+.card p,
+.card h2 {
+  transition: all 0.3s ease-out;
+  opacity: var(--active);
+
+  @apply truncate;
+}
+
+.nav {
+  @apply text-black absolute flex items-center justify-center top-1/2 z-10 cursor-pointer select-none;
+
+  svg {
+    @apply w-10 h-auto;
   }
-
-  ul li {
-    height: 50px;
-    line-height: 50px;
-    transition: transform 0.3s;
-    overflow: hidden;
-
-    &:last-of-type {
-      padding-bottom: 50px;
-    }
-
-    &.active {
-      .item {
-        transform: scale(1.9);
-      }
-    }
-  }
-
-  ul li .item {
-    position: relative;
-    transition: transform 200ms;
-    display: inline-block;
-  }
+}
+.nav.left {
+  transform: translateX(-100%) translatey(-50%);
+}
+.nav.right {
+  right: 0;
+  transform: translateX(100%) translatey(-50%);
 }

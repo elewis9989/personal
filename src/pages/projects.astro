@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "@styles/projects.css";
+import { ProjectList } from "@components/projects";
 ---
 
 <Layout
@@ -9,46 +10,7 @@ import "@styles/projects.css";
   navColor="text-white"
   navUnderline="bg-white"
 >
-  <div id="scroll-container">
-    <div class="wrap-container" id="wrap-scroll">
-      <ul id="ul-scroll">
-        <li class="active">
-          <span class="item"> Item one</span>
-        </li>
-        <li>
-          <span class="item"> Item two</span>
-        </li>
-        <li>
-          <span class="item"> Item three</span>
-        </li>
-        <li>
-          <span class="item"> Item four</span>
-        </li>
-        <li>
-          <span class="item"> Item five</span>
-        </li>
-        <li>
-          <span class="item"> Item six</span>
-        </li>
-        <li>
-          <span class="item"> Item seven</span>
-        </li>
-        <li>
-          <span class="item"> Item eight</span>
-        </li>
-        <li>
-          <span class="item"> Item nine</span>
-        </li>
-        <li>
-          <span class="item"> Item ten</span>
-        </li>
-        <li>
-          <span class="item"> Item eleven</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <script>
-    import "../scripts/scroll.js";
-  </script>
+  <section class="flex justify-center items-center h-full w-full">
+    <ProjectList client:load />
+  </section>
 </Layout>
