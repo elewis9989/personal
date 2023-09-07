@@ -12,12 +12,19 @@ export const ProjectList: Component = () => {
       <For each={projects}>
         {(project) => (
           <FadeIn>
-            <div class="p-10 flex flex-col lg:flex-row items-center h-full">
+            <div class="p-10 flex flex-col lg:flex-row items-center h-full justify-between">
               <div class="flex flex-col items-center lg:w-1/2 w-full">
-                <h2 class="lg:text-6xl text-4xl font-light py-1">
-                  {project.title}
+                <h2 class="lg:text-6xl text-4xl font-light py-2 text-center">
+                  <a href={project.url} target="_blank" class="hover:underline">
+                    {project.title}
+                  </a>
                 </h2>
-                <img src="/images/projects/modal.png" class="w-full h-auto" />
+                <div class="w-4/5">
+                  <img
+                    src={project.image.src}
+                    class="w-full h-auto shadow-xl shadow-gray-800 rounded-lg"
+                  />
+                </div>
               </div>
               <div class="flex flex-col lg:w-1/2 w-full lg:gap-20 gap-10">
                 <p class="lg:text-4xl lg:text-left text-center text-2xl font-extralight ">
@@ -60,56 +67,51 @@ const FadeIn: Component<IFadeIn> = (props) => {
   );
 };
 
+import modalImg from "../images/projects/modal.png";
+import giftableImg from "../images/projects/giftable.png";
+import dindinImg from "../images/projects/dindin.png";
+import datavizGif from "../images/projects/dataviz.gif";
+import iotGif from "../images/projects/iot.gif";
+
 const projects = [
   {
     title: "Modal",
     description:
-      "An opinionated productivity manager, helping you achieve your goals by breaking down tasks and prioritizing them effectively",
-    year: "2021",
+      "My first SaaS app. I never found a great productivity manager, so I built an opinionated one. Modal was designed with simplicity for the everyday user",
+    year: "2023-Present",
+    url: "https://usemodal.com/",
+    image: modalImg,
   },
   {
-    title: "Project 2",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    year: "2021",
+    title: "Giftable",
+    description:
+      "I created Giftable so that I could remember gift ideas for friends and family, as well as myself :) I thought building a social network would be a great learning experience to up my code skills too",
+    year: "2022-2023",
+    url: "https://giftableapp.com/",
+    image: giftableImg,
   },
   {
-    title: "Project 3",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    year: "2021",
+    title: "DinDin",
+    description:
+      "DinDin is a dinner party app that makes it easier to scheule and attend dinner parties. This project taught me how to design mobile apps for both android and ios",
+    year: "2019",
+    url: "https://github.com/itsRoze/DinDin",
+    image: dindinImg,
   },
   {
-    title: "Project 4",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    year: "2021",
+    title: "Immigration Data Visualization",
+    description:
+      "I was curious to see how immigration numbers changed over time in the US, so I built a data visualization app to explore the data.",
+    year: "2018",
+    url: "https://immigration-viz.surge.sh/",
+    image: datavizGif,
   },
   {
-    title: "Project 5",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    year: "2021",
-  },
-  {
-    title: "Project 6",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    year: "2021",
-  },
-  {
-    title: "Project 7",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    year: "2021",
-  },
-  {
-    title: "Project 8",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    year: "2021",
-  },
-  {
-    title: "Project 9",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    year: "2021",
-  },
-  {
-    title: "Project 10",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    year: "2021",
+    title: "IoT Search Engine",
+    description:
+      "This project was built for the campus maintainance team at my university. The search engine allowed workers to search sensor data from IoT devices to monitor things like temperature and CO2.",
+    year: "2018",
+    url: "https://docs.google.com/presentation/d/e/2PACX-1vRaaSJg944iaiN75v8j0G9C7yWL0QFn8OMvCcW_Gm3mjOELJnyPz6ZSR9JMdf8hioSI18LeVj2FNruz/pub?start=false&loop=false&delayms=3000&slide=id.g464c87f956_0_902",
+    image: iotGif,
   },
 ];

@@ -26,6 +26,7 @@ module.exports = {
       fontFamily: {
         "urdu-nastaliq": ["Noto Nastaliq Urdu", "serif"],
         inter: ["Inter", "sans-serif"],
+        avenir: ["Avenir", "sans-serif"],
       },
       colors: {
         melon: "#F7BFB5",

@@ -1,5 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import roseImg from "../images/rose.svg";
 ---
 
 <Layout
@@ -18,6 +21,6 @@ import Layout from "../layouts/Layout.astro";
     <h2 class="md:text-xl text-sm md:font-[200] font-light uppercase">
       Engineer | Writer | Content Creator
     </h2>
-    <img src="/images/rose.svg" alt="Rose flower" class="w-14 h-auto py-2" />
+    <Image src={roseImg} alt="Rose flower" class="w-14 h-auto py-2" />
   </header>
 </Layout>
