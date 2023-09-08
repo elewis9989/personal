@@ -27,7 +27,7 @@ export const Navigation: Component<INavigation> = (props) => {
     <nav
       class={cn(
         props.textColor,
-        "flex justify-between lg:justify-center items-center lg:gap-24 lg:py-4 py-1 w-full",
+        "flex justify-between lg:justify-center items-center lg:gap-24 lg:py-4 py-1 w-full z-10",
       )}
     >
       {/* Mobile Menu */}
