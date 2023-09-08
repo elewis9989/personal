@@ -1,41 +1,40 @@
 ---
 import "@styles/global.css";
+import Head from "@components/Head.astro";
 import { Navigation } from "@components/navigation/navigation.tsx";
-import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
+  description: string;
+  image?: string;
+  type?: string;
+  date?: string;
   background: string;
   navColor: string;
   navUnderline: string;
 }
 
-const { title, background, navColor, navUnderline } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  type,
+  date,
+  background,
+  navColor,
+  navUnderline,
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Noto+Nastaliq+Urdu&display=swap"
-      rel="stylesheet"
-    />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <ViewTransitions />
-  </head>
+  <Head
+    title={title}
+    description={description}
+    type={type}
+    image={image}
+    date={date}
+  />
   <body class={background}>
     <Navigation
       client:load

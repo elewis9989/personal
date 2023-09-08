@@ -8,11 +8,15 @@ interface Props {
   rawContent: () => string;
 }
 const { frontmatter, rawContent } = Astro.props;
-const { title, excerpt, coverImage, ogImage, date } = frontmatter;
+const { title, excerpt, ogImage, date } = frontmatter;
 ---
 
 <Layout
   title={title}
+  description={excerpt}
+  image={ogImage}
+  type="article"
+  date={date}
   background="bg-white"
   navColor="text-black"
   navUnderline="bg-black"
