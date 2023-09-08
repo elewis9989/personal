@@ -8,7 +8,7 @@ import {
 
 export const ProjectList: Component = () => {
   return (
-    <div class="w-full lg:h-[50rem] h-[40rem] overflow-y-scroll custom-scroll">
+    <div class="w-full lg:h-[50rem] h-[35rem] overflow-y-scroll custom-scroll">
       <For each={projects}>
         {(project) => (
           <FadeIn>
@@ -19,17 +19,26 @@ export const ProjectList: Component = () => {
                     {project.title}
                   </a>
                 </h2>
-                <div class="w-4/5">
+                <div class="w-4/5 pb-10">
                   <img
                     src={project.image.src}
                     class="w-full h-auto shadow-xl shadow-gray-800 rounded-lg"
                   />
                 </div>
               </div>
-              <div class="flex flex-col lg:w-1/2 w-full lg:gap-20 gap-10">
+              <div class="flex flex-col lg:w-1/2 w-full lg:gap-10 gap-4">
                 <p class="lg:text-4xl lg:text-left text-center text-2xl font-extralight ">
                   {project.description}
                 </p>
+                <div class="text-center lg:text-left">
+                  <For each={project.tags}>
+                    {(tag) => (
+                      <span class="bg-yellow-200 w-fit px-2 py-0.5 rounded leading-4 mr-1 mb-1 inline-flex font-medium">
+                        {tag}
+                      </span>
+                    )}
+                  </For>
+                </div>
                 <p class="lg:text-3xl lg:text-left text-center text-2xl font-medium">
                   {project.year}
                 </p>
@@ -81,6 +90,7 @@ const projects = [
     year: "2023-Present",
     url: "https://usemodal.com/",
     image: modalImg,
+    tags: ["React", "NextJS", "Tailwind CSS", "React Native", "AWS", "SQL"],
   },
   {
     title: "Giftable",
@@ -89,6 +99,7 @@ const projects = [
     year: "2022-2023",
     url: "https://giftableapp.com/",
     image: giftableImg,
+    tags: ["React", "NextJS", "Tailwind CSS", "SQL"],
   },
   {
     title: "DinDin",
@@ -97,6 +108,7 @@ const projects = [
     year: "2019",
     url: "https://github.com/itsRoze/DinDin",
     image: dindinImg,
+    tags: ["React Native", "Firebase"],
   },
   {
     title: "Immigration Data Visualization",
@@ -105,6 +117,7 @@ const projects = [
     year: "2018",
     url: "https://immigration-viz.surge.sh/",
     image: datavizGif,
+    tags: ["HTML", "CSS", "JavaScript", "D3"],
   },
   {
     title: "IoT Search Engine",
@@ -113,5 +126,6 @@ const projects = [
     year: "2018",
     url: "https://docs.google.com/presentation/d/e/2PACX-1vRaaSJg944iaiN75v8j0G9C7yWL0QFn8OMvCcW_Gm3mjOELJnyPz6ZSR9JMdf8hioSI18LeVj2FNruz/pub?start=false&loop=false&delayms=3000&slide=id.g464c87f956_0_902",
     image: iotGif,
+    tags: ["Angular", "SQL", "Express", "IoT"],
   },
 ];
