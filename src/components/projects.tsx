@@ -8,11 +8,11 @@ import {
 
 export const ProjectList: Component = () => {
   return (
-    <div class="w-full lg:h-[50rem] h-[35rem] overflow-y-scroll custom-scroll">
+    <div class="w-full xl:h-[30rem] h-[25rem] overflow-y-scroll custom-scroll">
       <For each={projects}>
         {(project) => (
           <FadeIn>
-            <div class="p-10 flex flex-col lg:flex-row items-center h-full justify-between">
+            <div class="xl:p-10 px-10 py-4 flex flex-col lg:flex-row items-center h-full justify-between">
               <div class="flex flex-col items-center lg:w-1/2 w-full">
                 <h2 class="lg:text-6xl text-4xl font-light py-2 text-center">
                   <a href={project.url} target="_blank" class="hover:underline">
