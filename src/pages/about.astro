@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
 import rozeImg from "../images/roze.jpg";
+import uvaSvg from "../images/uva.svg";
 ---
 
 <Layout
@@ -19,9 +20,10 @@ import rozeImg from "../images/roze.jpg";
         class="lg:text-4xl md:text-3xl lg:font-light pb-4 lg:leading-relaxed text-lg lg:px-0 px-1 text-center md:text-left"
       >
         Hello. I am a Washington D.C. based software engineer 🧑🏽‍💻. I studied
-        computer science at the University of Virginia <img
+        computer science at the University of Virginia <Image
           class="inline-block text-white w-5 h-auto lg:w-8 pb-2"
-          src="../images/uva.svg"
+          src={uvaSvg}
+          alt="UVA logo"
         /> where I earned <b class="bg-yellow-600 whitespace-nowrap"
           >High Distinctions</b
         > for my machine learning work (check out the
