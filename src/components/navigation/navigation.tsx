@@ -57,7 +57,7 @@ export const Navigation: Component<INavigation> = (props) => {
               class={cn({
                 "text-smoke uppercase text-4xl font-light py-2": true,
                 "underline underline-offset-[12px]":
-                  props.pathname === link.href,
+                  props.pathname.includes(link.href) && link.name !== "Index",
               })}
             >
               {link.name}
@@ -73,8 +73,10 @@ export const Navigation: Component<INavigation> = (props) => {
               href={link.href}
               class={cn({
                 "underline underline-offset-[12px]":
-                  props.pathname === link.href && props.pathname !== "/",
-                "group transition duration-300": props.pathname !== link.href,
+                  props.pathname.includes(link.href) && link.name !== "Index",
+                "group transition duration-300": !props.pathname.includes(
+                  link.href,
+                ),
               })}
             >
               {link.name}

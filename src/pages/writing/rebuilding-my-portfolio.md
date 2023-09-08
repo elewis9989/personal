@@ -1,9 +1,10 @@
 ---
+layout: "../../layouts/MarkdownLayout.astro"
 title: Rebuilding my Portfolio with Next, MDX, and Contentlayer
 excerpt: Learn how to use MDX with NextJS and Contentlayer
 coverImage: /images/blog/cover-rebuilding-my-portfolio.png
 ogImage: /images/blog/cover-rebuilding-my-portfolio.png
-date: '2022-03-21'
+date: "2022-03-21"
 ---
 
 # Why I Stopped Using Ghost
@@ -35,8 +36,8 @@ Only select Tailwind, we don't need the other packages
 After installation, we can clear up the homepage
 
 ```tsx showLineNumbers title="index.tsx"
-import { type NextPage } from 'next';
-import Head from 'next/head';
+import { type NextPage } from "next";
+import Head from "next/head";
 const Home: NextPage = () => {
   return (
     <>
@@ -88,12 +89,12 @@ Modify your `next.config.mjs`
 ```js title="next.config.mjs"
 // next.config.mjs
 
-import { withContentlayer } from 'next-contentlayer';
+import { withContentlayer } from "next-contentlayer";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configure pageExtensions to include md and mdx
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,
   swcMinify: true,
 };
@@ -122,81 +123,81 @@ Create a file `contentlayer.config.ts` and we will do three things
 2. Setup our remark and rehype plugins
 
 ```typescript title="contentlayer.config.ts"
-import { defineDocumentType, makeSource } from 'contentlayer/source-files';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypePrettyCode from 'rehype-pretty-code';
-import rehypeSlug from 'rehype-slug';
-import remarkFrontmatter from 'remark-frontmatter';
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+import remarkFrontmatter from "remark-frontmatter";
 
 export const Post = defineDocumentType(() => ({
-  name: 'Post',
+  name: "Post",
   filePathPattern: `**/*.mdx`,
-  contentType: 'mdx',
+  contentType: "mdx",
   fields: {
     title: {
-      type: 'string',
-      description: 'The title of the post',
+      type: "string",
+      description: "The title of the post",
       required: true,
     },
     excerpt: {
-      type: 'string',
-      description: 'The excerpt of the post',
+      type: "string",
+      description: "The excerpt of the post",
       required: true,
     },
     date: {
-      type: 'string',
-      description: 'The date of the post',
+      type: "string",
+      description: "The date of the post",
       required: true,
     },
     coverImage: {
-      type: 'string',
-      description: 'The cover image of the post',
+      type: "string",
+      description: "The cover image of the post",
       required: false,
     },
     ogImage: {
-      type: 'string',
-      description: 'The og cover image of the post',
+      type: "string",
+      description: "The og cover image of the post",
       required: false,
     },
   },
   computedFields: {
     url: {
-      type: 'string',
+      type: "string",
       resolve: (post) => `/blog/${post._raw.flattenedPath}`,
     },
     slug: {
-      type: 'string',
+      type: "string",
       resolve: (post) => post._raw.flattenedPath,
     },
   },
 }));
 
 const prettyCodeOptions = {
-  theme: 'material-theme-palenight',
+  theme: "material-theme-palenight",
 
   onVisitLine(node: { children: string | unknown[] }) {
     if (node.children.length === 0) {
-      node.children = [{ type: 'text', value: ' ' }];
+      node.children = [{ type: "text", value: " " }];
     }
   },
 
   onVisitHighlightedLine(node: { properties: { className: string[] } }) {
-    node.properties.className.push('highlighted');
+    node.properties.className.push("highlighted");
   },
 
   onVisitHighlightedWord(node: { properties: { className: string[] } }) {
-    node.properties.className = ['highlighted', 'word'];
+    node.properties.className = ["highlighted", "word"];
   },
 };
 
 export default makeSource({
-  contentDirPath: 'content',
+  contentDirPath: "content",
   documentTypes: [Post],
   mdx: {
     remarkPlugins: [remarkFrontmatter],
     rehypePlugins: [
       rehypeSlug,
-      [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+      [rehypeAutolinkHeadings, { behavior: "wrap" }],
       [rehypePrettyCode, prettyCodeOptions],
     ],
   },
@@ -220,7 +221,7 @@ Create a file in `content` called `first-post.mdx`
 ---
 title: First Post
 excerpt: My first ever post on my blog
-date: '2022-02-16'
+date: "2022-02-16"
 ---
 
 # Hello World
@@ -233,7 +234,7 @@ My name is Roze and I built this blog to do cool things
 ## Random Code
 
 ```mdx {1,15} showLineNumbers title="Page.mdx"
-import { MyComponent } from '../components/...';
+import { MyComponent } from "../components/...";
 
 # My MDX page
 
@@ -377,7 +378,7 @@ module.exports = {
     // ...
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    require("@tailwindcss/typography"),
     // ...
   ],
 };
@@ -405,7 +406,7 @@ In the above code we `useMDX` allows us to render our mdx and the `className='pr
 
 But our post looks gross.
 
-![First Post image](/images/blog/first-post-1.png 'First Post image')
+![First Post image](/images/blog/first-post-1.png "First Post image")
 
 We can modify some of the styles in `globals.css`
 
@@ -450,4 +451,4 @@ div[data-rehype-pretty-code-title] {
 
 Much better :)
 
-![First Post image with styles](/images/blog/first-post-2.png 'First Post image with styles')
+![First Post image with styles](/images/blog/first-post-2.png "First Post image with styles")

@@ -1,6 +1,6 @@
 html,
 body {
-  @apply h-full w-full font-inter font-normal flex flex-col items-center;
+  @apply h-full w-screen font-inter font-normal flex flex-col items-center;
 }
 
 body main {
