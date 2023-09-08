@@ -54,6 +54,7 @@ export const Navigation: Component<INavigation> = (props) => {
           {(link) => (
             <a
               href={link.href}
+              target={link.name === "Resume" ? "_blank" : "_self"}
               class={cn({
                 "text-smoke uppercase text-4xl font-light py-2": true,
                 "underline underline-offset-[12px]":
@@ -71,6 +72,7 @@ export const Navigation: Component<INavigation> = (props) => {
           {(link) => (
             <a
               href={link.href}
+              target={link.name === "Resume" ? "_blank" : "_self"}
               class={cn({
                 "underline underline-offset-[12px]":
                   props.pathname.includes(link.href) && link.name !== "Index",
