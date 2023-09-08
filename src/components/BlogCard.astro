@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import { type Frontmatter } from "@/pages/writing/index.astro";
+import readingTime from "reading-time";
+
+interface Props {
+  url: string;
+  frontmatter: Frontmatter;
+  rawContent: string;
+}
+
+const { url, frontmatter, rawContent } = Astro.props;
+const { title, excerpt, coverImage, ogImage, date } = frontmatter;
+---
+
+<div
+  class="bg-white rounded-lg overflow-hidden shadow-lg max-w-lg md:hover:bg-gray-100 transition duration-300 ease-in-out transform md:hover:-translate-y-1 md:hover:scale-105"
+>
+  <a href={url}>
+    <Image src={coverImage} alt="Cover image" width={1200} height={504} />
+    <div class="p-4">
+      <div class="h-28">
+        <h1 class="text-sky-800 text-xl md:text-2xl font-semibold line-clamp-2">
+          {title}
+        </h1>
+        <p class="text-lg md:text-xl line-clamp-2">{excerpt}</p>
+      </div>
+      <div class="flex items-center py-2 mt-2 text-base md:text-lg">
+        <p class="mr-6">
+          🗓{" "}
+          {
+            new Date(date).toLocaleDateString("en-us", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })
+          }
+        </p>
+        <p>📖 {readingTime(rawContent).text}</p>
+      </div>
+    </div>
+  </a>
+</div>
