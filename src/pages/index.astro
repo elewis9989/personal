@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import roseImg from "../images/rose.svg";
+---
+
+<Layout
+  title="ROZE"
+  description="Hi I'm Roze. An engineer, writer, and content creator"
+  background="bg-melon"
+  navColor="text-smoke"
+  navUnderline="bg-smoke"
+>
+  <header
+    class="text-white flex flex-col items-center h-full justify-center gap-4"
+  >
+    <h1
+      class="font-urdu-nastaliq md:text-9xl lg:text-[14rem] md:pb-8 pb-4 text-7xl"
+    >
+      روز
+    </h1>
+    <h1
+      class="md:text-9xl lg:text-[16rem] text-7xl font-medium uppercase tracking-widest"
+    >
+      roze
+    </h1>
+    <h2
+      class="md:text-xl lg:text-3xl text-sm md:font-[200] font-light uppercase"
+    >
+      Engineer | Writer | Content Creator
+    </h2>
+    <Image src={roseImg} alt="Rose flower" class="w-14 lg:w-28 h-auto py-2" />
+  </header>
+</Layout>

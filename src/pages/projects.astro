@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "@styles/projects.css";
+import { ProjectList } from "@components/projects";
+---
+
+<Layout
+  title="ROZE | PROJECTS"
+  description="Coding projects"
+  background="bg-myrtle-green"
+  navColor="text-white"
+  navUnderline="bg-white"
+>
+  <header>
+    <h1
+      class="text-white text-5xl lg:text-8xl uppercase text-center py-4 lg:py-8 font-avenir font-bold"
+    >
+      Featured Projects
+    </h1>
+  </header>
+  <section class="flex flex-col pt-14 items-center w-full">
+    <ProjectList client:load />
+  </section>
+</Layout>

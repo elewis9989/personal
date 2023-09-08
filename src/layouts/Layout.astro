@@ -1,0 +1,47 @@
+---
+import "@styles/global.css";
+import Head from "@components/Head.astro";
+import { Navigation } from "@components/navigation/navigation.tsx";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: string;
+  date?: string;
+  background: string;
+  navColor: string;
+  navUnderline: string;
+}
+
+const {
+  title,
+  description,
+  image,
+  type,
+  date,
+  background,
+  navColor,
+  navUnderline,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <Head
+    title={title}
+    description={description}
+    type={type}
+    image={image}
+    date={date}
+  />
+  <body class={background}>
+    <Navigation
+      client:load
+      textColor={navColor}
+      underlineColor={navUnderline}
+      pathname={Astro.url.pathname}
+    />
+    <main><slot /></main>
+  </body>
+</html>

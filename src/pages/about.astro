@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import rozeImg from "../images/roze.jpg";
+import uvaSvg from "../images/uva.svg";
+---
+
+<Layout
+  title="ROZE | ABOUT"
+  description="Hi I'm Roze. An engineer, writer, and content creator"
+  background="bg-bark"
+  navColor="text-white"
+  navUnderline="bg-white"
+>
+  <header
+    class="text-white flex md:flex-row flex-col-reverse items-center justify-center w-full gap-1 h-full"
+  >
+    <div class="md:w-1/2 w-full flex justify-center">
+      <h1
+        class="lg:text-4xl md:text-3xl lg:font-light pb-4 lg:leading-relaxed text-lg lg:px-0 px-1 text-center md:text-left"
+      >
+        Hello. I am a Washington D.C. based software engineer 🧑🏽‍💻. I studied
+        computer science at the University of Virginia <Image
+          class="inline-block text-white w-5 h-auto lg:w-8 pb-2"
+          src={uvaSvg}
+          alt="UVA logo"
+        /> where I earned <b class="bg-yellow-600 whitespace-nowrap"
+          >High Distinctions</b
+        > for my machine learning work (check out the
+
+        <a
+          href="http://doi.org/10.2196/preprints.51567"
+          class="underline hover:text-melon">paper</a
+        > and <a
+          href="https://mindtrails.virginia.edu/"
+          class="underline hover:text-melon">website</a
+        >). I spent a few years in the healthcare data interoperability space.
+        Now I&apos;m helping people achieve their goals by building ⚡️<a
+          href="https://usemodal.com/"
+          class="underline hover:text-melon">Modal</a
+        >
+      </h1>
+    </div>
+    <div class="md:w-1/2 w-full flex flex-col items-center justify-center">
+      <Image
+        src={rozeImg}
+        alt="A picture of Roze, any / all pronouns"
+        class="w-2/5 md:w-4/5 rounded-lg shadow-md shadow-black"
+      />
+      <figcaption class="text-gray-400 italic lg:text-2xl pt-4 font-light">
+        any / all pronouns
+      </figcaption>
+    </div>
+  </header>
+</Layout>

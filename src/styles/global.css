@@ -1,0 +1,8 @@
+html,
+body {
+  @apply h-full w-screen font-inter font-normal flex flex-col items-center;
+}
+
+body main {
+  @apply flex-1 w-full max-w-screen-xl;
+}
