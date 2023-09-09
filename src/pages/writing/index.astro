@@ -8,8 +8,9 @@ export interface Frontmatter {
   coverImage: string;
   ogImage: string;
   date: string;
+  minutesRead: number;
 }
-const allPosts = await Astro.glob<Frontmatter>("./*.md");
+const allPosts = await Astro.glob<Frontmatter>("./*.mdx");
 
 //sort by date
 allPosts.sort((a, b) => {
@@ -40,11 +41,7 @@ allPosts.sort((a, b) => {
       {
         allPosts.map((post) => (
           <li class="max-w-md">
-            <BlogCard
-              url={post.url ?? "/404"}
-              frontmatter={post.frontmatter}
-              rawContent={post.rawContent()}
-            />
+            <BlogCard url={post.url ?? "/404"} frontmatter={post.frontmatter} />
           </li>
         ))
       }

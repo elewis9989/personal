@@ -1,16 +1,14 @@
 ---
 import { Image } from "astro:assets";
 import { type Frontmatter } from "@/pages/writing/index.astro";
-import readingTime from "reading-time";
 
 interface Props {
   url: string;
   frontmatter: Frontmatter;
-  rawContent: string;
 }
 
-const { url, frontmatter, rawContent } = Astro.props;
-const { title, excerpt, coverImage, ogImage, date } = frontmatter;
+const { url, frontmatter } = Astro.props;
+const { title, excerpt, coverImage, date, minutesRead } = frontmatter;
 ---
 
 <div
@@ -36,7 +34,7 @@ const { title, excerpt, coverImage, ogImage, date } = frontmatter;
             })
           }
         </p>
-        <p>📖 {readingTime(rawContent).text}</p>
+        <p>📖 {minutesRead}</p>
       </div>
     </div>
   </a>

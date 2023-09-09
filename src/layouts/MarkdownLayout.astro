@@ -1,14 +1,14 @@
 ---
 import type { Frontmatter } from "@/pages/writing/index.astro";
 import Layout from "./Layout.astro";
-import readingTime from "reading-time";
 
 interface Props {
   frontmatter: Frontmatter;
   rawContent: () => string;
 }
-const { frontmatter, rawContent } = Astro.props;
+const { frontmatter } = Astro.props;
 const { title, excerpt, ogImage, date } = frontmatter;
+const { minutesRead } = Astro.props.frontmatter;
 ---
 
 <Layout
@@ -23,7 +23,7 @@ const { title, excerpt, ogImage, date } = frontmatter;
 >
   <header class="px-1">
     <h1
-      class="text-3xl lg:text-8xl uppercase text-center py-4 lg:py-8 font-avenir font-bold"
+      class="text-[2.5rem] lg:text-8xl uppercase text-center py-4 lg:py-8 font-avenir font-bold"
     >
       {title}
     </h1>
@@ -56,12 +56,14 @@ const { title, excerpt, ogImage, date } = frontmatter;
             ></path>
             <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"></path>
           </svg>
-          <span>{readingTime(rawContent()).text}</span>
+          <span>{minutesRead}</span>
         </div>
       </div>
     </div>
   </header>
-  <article class="prose max-w-screen-xl md:prose-xl px-1 lg:px-0 lg:mt-8">
+  <article
+    class="prose max-w-screen-xl md:prose-xl px-1 lg:px-0 lg:mt-8 markdown"
+  >
     <slot />
   </article>
 </Layout>

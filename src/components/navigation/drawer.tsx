@@ -1,5 +1,6 @@
 import { cn } from "@/utils/cn";
 import { type Component, type JSX, type Setter, type Accessor } from "solid-js";
+import "@styles/navigation.css";
 
 interface IDrawer {
   children: JSX.Element;
@@ -11,7 +12,7 @@ export const Drawer: Component<IDrawer> = (props) => {
   return (
     <main
       class={cn({
-        "fixed overflow-hidden z-10 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out lg:hidden":
+        "fixed overflow-hidden z-30 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out lg:hidden":
           true,
         "transition-opacity opacity-100 duration-500 translate-x-0":
           props.open(),
@@ -26,7 +27,7 @@ export const Drawer: Component<IDrawer> = (props) => {
           "-translate-x-full": !props.open(),
         })}
       >
-        <article class="relative w-fit max-w-xs pb-10 flex flex-col space-y-6 overflow-y-scroll h-full ml-2">
+        <article class="relative w-[19.25rem] max-w-xs pb-10 flex flex-col space-y-6 overflow-y-scroll h-full ml-2 nav-scroll">
           <button onclick={() => props.setOpen(!props.open())} class="w-fit ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
