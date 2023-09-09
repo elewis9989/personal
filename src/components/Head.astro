@@ -15,7 +15,7 @@ const isProd = import.meta.env.PROD
 ---
 
 <head>
-  {isProd ?? <!-- Google tag (gtag.js) -->
+  {isProd ? <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DV24T93GCN"
   ></script>
   <script>
@@ -26,7 +26,7 @@ const isProd = import.meta.env.PROD
     gtag("js", new Date());
 
     gtag("config", "G-DV24T93GCN");
-  </script> }
+  </script> : null}
   <meta charset="UTF-8" />
   <meta name="description" content={description} />
   <meta name="author" content="Roze" />
