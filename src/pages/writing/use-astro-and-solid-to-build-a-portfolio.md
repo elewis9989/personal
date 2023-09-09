@@ -2,8 +2,8 @@
 layout: "../../layouts/MarkdownLayout.astro"
 title: Use Astro and Solid to Build a Portfolio
 excerpt: Learn how to use Astro and Solid to build your portfolio
-coverImage: /images/blog/cover-rebuilding-my-portfolio.png
-ogImage: /images/blog/cover-rebuilding-my-portfolio.png
+coverImage: /images/blog/cover-use-astro-and-solid-to-build.png
+ogImage: /images/blog/cover-use-astro-and-solid-to-build.png
 date: "2023-09-09"
 ---
 
