@@ -1,10 +1,4 @@
-import {
-  For,
-  type Component,
-  createSignal,
-  createEffect,
-  type JSX,
-} from "solid-js";
+import { type Component } from "solid-js";
 
 export const Newsletter: Component = () => {
   return (
