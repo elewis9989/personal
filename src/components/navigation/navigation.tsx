@@ -12,8 +12,6 @@ const links = [
 ];
 
 interface INavigation {
-  textColor: string;
-  underlineColor: string;
   pathname: string;
 }
 
@@ -25,9 +23,7 @@ export const Navigation: Component<INavigation> = (props) => {
   };
 
   return (
-    <nav
-      class={cn(props.textColor, "flex lg:gap-24 lg:py-4 py-1 z-10 font-sans")}
-    >
+    <nav class={cn("flex lg:gap-24 lg:py-4 py-1 z-10 font-sans")}>
       {/* Mobile Menu */}
       <button id="mobile-menu" onclick={toggleDrawer} class="lg:hidden">
         <svg
@@ -83,7 +79,7 @@ export const Navigation: Component<INavigation> = (props) => {
             >
               {link.name}
               <span
-                class={`block max-w-0 group-hover:max-w-full transition-all duration-500 h-1 ${props.underlineColor}`}
+                class={`block max-w-0 group-hover:max-w-full transition-all duration-500 h-1`}
               ></span>
             </a>
           )}

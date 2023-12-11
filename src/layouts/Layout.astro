@@ -14,13 +14,9 @@ interface Props {
   image?: string;
   type?: string;
   date?: string;
-  background: string;
-  navColor: string;
-  navUnderline: string;
 }
 
-const { title, description, image, type, date, navColor, navUnderline } =
-  Astro.props;
+const { title, description, image, type, date } = Astro.props;
 ---
 
 <!doctype html>
@@ -34,12 +30,7 @@ const { title, description, image, type, date, navColor, navUnderline } =
   />
   <body>
     <header>
-      <Navigation
-        client:load
-        textColor={navColor}
-        underlineColor={navUnderline}
-        pathname={Astro.url.pathname}
-      />
+      <Navigation client:load pathname={Astro.url.pathname} />
     </header>
     <Image
       src={graphImg}
