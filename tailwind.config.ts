@@ -24,15 +24,13 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        "urdu-nastaliq": ["Noto Nastaliq Urdu", "serif"],
-        inter: ["Inter", "sans-serif"],
-        avenir: ["Avenir", "sans-serif"],
+        "urdu-nastaliq": ["Noto Nastaliq Urdu Variable", "sans-serif"],
+        sans: ["InterVariable", "Inter", "sans-serif"],
+        serif: ["Noto Serif Variable", "sans-serif"],
       },
       colors: {
-        melon: "#F7BFB5",
-        smoke: "#45434C",
-        bark: "#362C28",
-        "myrtle-green": "#A8BA9A",
+        chalk: "#FBFFFF",
+        "dim-gray": "#686963",
       },
     },
   },

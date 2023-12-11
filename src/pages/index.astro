@@ -1,8 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Newsletter } from "@/components/newsletter";
 import { Image } from "astro:assets";
 
-import roseImg from "../images/rose.svg";
+import rozeImg from "../images/roze.jpeg";
 ---
 
 <Layout
@@ -12,24 +13,50 @@ import roseImg from "../images/rose.svg";
   navColor="text-smoke"
   navUnderline="bg-smoke"
 >
-  <header
-    class="text-white flex flex-col items-center h-full justify-center gap-4"
-  >
-    <h1
-      class="font-urdu-nastaliq md:text-9xl xl:text-[12rem] md:pb-8 pb-4 -mt-16 text-7xl"
-    >
-      روز
-    </h1>
-    <h1
-      class="md:text-9xl xl:text-[14rem] text-7xl font-medium uppercase tracking-widest"
-    >
-      roze
-    </h1>
-    <h2
-      class="md:text-xl lg:text-2xl text-sm md:font-[200] font-light uppercase"
-    >
-      Engineer | Writer | Content Creator
-    </h2>
-    <Image src={roseImg} alt="Rose flower" class="w-14 xl:w-20 h-auto py-2" />
-  </header>
+  <h1 class="text-3xl font-bold pb-10">Hello.</h1>
+  <article class="text-xl space-y-4 leading-relaxed">
+    <p>
+      As a multi-disciplinary creator, I focus on the intersections of
+      technology, art, and collaboration. Today, I focus on designing software
+      to facilitate connecting people through their ideas and thoughts.
+    </p>
+    <p>
+      I studied computer science at the University of Virginia where I earned
+      High Distinctions for my machine learning work. Later, I would focus on
+      healthcare interoperability at Epic and then building my own startups.
+    </p>
+    <p>
+      This will be the home for sharing my projects, written work, and research.
+      At some point, I plan to organize this as a newsletter. If you would like
+      to be part of the mailing list, please subscribe
+    </p>
+    <Newsletter />
+    <p>
+      You can find me on <a
+        href="https://twitter.com/emotionldaffodl"
+        class="underline hover:opacity-50">Twitter</a
+      >, <a
+        href="https://github.com/itsRoze/"
+        class="underline hover:opacity-50">Github</a
+      >, and <a
+        href="https://tiktok.com/@emotionaldaffodil"
+        class="underline hover:opacity-50">Tiktok</a
+      >. The best way to contact me is through my email: <span
+        class="whitespace-nowrap">hello <b>at</b> roze <b>dot</b> dev</span
+      >
+    </p>
+    <p class="pt-12 font-light">Peace, Power, & Poetry</p>
+    <Image
+      src={rozeImg}
+      alt="Profile picture of me"
+      class="rounded-full w-40 h-auto"
+    />
+    <div class="flex font-light gap-2">
+      <code class="mr-2">&#8212;</code><p>Roze</p><p
+        class="font-urdu-nastaliq -mt-1 text-gray-600"
+      >
+        روز
+      </p>
+    </div>
+  </article>
 </Layout>
