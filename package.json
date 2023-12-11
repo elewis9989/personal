@@ -8,7 +8,9 @@
     "build": "astro check && astro build",
     "typecheck": "astro check",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format:check": "prettier --plugin-search-dir=. --check .",
+    "format": "prettier --plugin-search-dir=. --write ."
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",

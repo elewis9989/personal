@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import BlogCard from "@components/BlogCard.astro";
+import { getCollection } from "astro:content";
 
 export interface Frontmatter {
   title: string;
@@ -10,12 +11,12 @@ export interface Frontmatter {
   date: string;
   minutesRead: number;
 }
-const allPosts = await Astro.glob<Frontmatter>("./*.mdx");
+const allPosts = await getCollection("blog");
 
 //sort by date
 allPosts.sort((a, b) => {
-  const dateA = new Date(a.frontmatter.date);
-  const dateB = new Date(b.frontmatter.date);
+  const dateA = new Date(a.data.date);
+  const dateB = new Date(b.data.date);
   return dateB.getTime() - dateA.getTime();
 });
 ---
@@ -27,7 +28,7 @@ allPosts.sort((a, b) => {
       {
         allPosts.map((post) => (
           <li>
-            <BlogCard url={post.url ?? "/404"} frontmatter={post.frontmatter} />
+            <BlogCard url={`/writing/${post.slug}`} frontmatter={post.data} />
           </li>
         ))
       }
