@@ -3,14 +3,6 @@ import Layout from "@layouts/Layout.astro";
 import BlogCard from "@components/BlogCard.astro";
 import { getCollection } from "astro:content";
 
-export interface Frontmatter {
-  title: string;
-  excerpt: string;
-  coverImage: string;
-  ogImage: string;
-  date: string;
-  minutesRead: number;
-}
 const allPosts = await getCollection("blog");
 
 //sort by date
@@ -26,11 +18,21 @@ allPosts.sort((a, b) => {
   <section>
     <ul class="space-y-6">
       {
-        allPosts.map((post) => (
-          <li>
-            <BlogCard url={`/writing/${post.slug}`} frontmatter={post.data} />
-          </li>
-        ))
+        allPosts.map(async (post) => {
+          const { remarkPluginFrontmatter } = await post.render();
+
+          return (
+            <li>
+              <BlogCard
+                url={`/writing/${post.slug}`}
+                title={post.data.title}
+                excerpt={post.data.excerpt}
+                date={post.data.date}
+                minutesRead={remarkPluginFrontmatter.minutesRead}
+              />
+            </li>
+          );
+        })
       }
     </ul>
   </section>

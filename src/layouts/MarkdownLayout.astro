@@ -1,13 +1,14 @@
 ---
-import type { Frontmatter } from "@/pages/writing/index.astro";
 import Layout from "./Layout.astro";
 
 interface Props {
-  frontmatter: Frontmatter;
+  title: string;
+  excerpt: string;
+  ogImage: string;
+  date: Date;
+  minutesRead: string;
 }
-const { frontmatter } = Astro.props;
-const { title, excerpt, ogImage, date } = frontmatter;
-const { minutesRead } = Astro.props.frontmatter;
+const { title, excerpt, ogImage, date, minutesRead } = Astro.props;
 ---
 
 <Layout

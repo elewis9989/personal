@@ -1,13 +1,13 @@
 ---
-import { type Frontmatter } from "@/pages/writing/index.astro";
-
 interface Props {
   url: string;
-  frontmatter: Frontmatter;
+  title: string;
+  excerpt: string;
+  date: Date;
+  minutesRead: string;
 }
 
-const { url, frontmatter } = Astro.props;
-const { title, excerpt, date, minutesRead } = frontmatter;
+const { url, title, excerpt, date, minutesRead } = Astro.props;
 ---
 
 <div class="space-y-2">
@@ -16,7 +16,7 @@ const { title, excerpt, date, minutesRead } = frontmatter;
   <div class="space-x-4 text-sm font-medium">
     <time
       >🗓️ {
-        new Date(date).toLocaleDateString("en-us", {
+        date.toLocaleDateString("en-us", {
           year: "numeric",
           month: "short",
           day: "numeric",
