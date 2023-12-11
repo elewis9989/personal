@@ -2,8 +2,8 @@ import { type Component } from "solid-js";
 
 export const Newsletter: Component = () => {
   return (
-    <section>
-      <form class="flex gap-4 p-2 font-sans text-base">
+    <section class="w-full flex justify-center">
+      <form class="flex flex-col md:flex-row gap-4 p-2 font-sans text-base md:w-full w-80">
         <input
           type="text"
           placeholder="Name"

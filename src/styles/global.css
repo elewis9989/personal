@@ -1,6 +1,6 @@
 html,
 body {
-  @apply w-screen bg-[#FBFFFF] h-[100svh] flex flex-col py-6 items-center;
+  @apply w-screen bg-[#FBFFFF] h-[100svh] flex flex-col md:py-6 py-3 items-center px-2 md:px-0;
 }
 
 body main {
