@@ -44,15 +44,18 @@ export const Navigation: Component<INavigation> = (props) => {
         </svg>
       </button>
       <Drawer open={open} setOpen={setOpen}>
+        <a href="/">
+          <img src={roseImg.src} alt="Rose flower" class="w-4 xl:w-6 h-auto" />
+        </a>
         <For each={links}>
           {(link) => (
             <a
               href={link.href}
               target={link.name === "Resume" ? "_blank" : "_self"}
               class={cn({
-                "lowercase text-xl font-light py-2": true,
+                "lowercase text-lg": true,
                 "underline underline-offset-[12px]":
-                  props.pathname.includes(link.href) && link.name !== "Index",
+                  props.pathname.includes(link.href) && link.href !== "/",
               })}
             >
               {link.name}
@@ -63,7 +66,7 @@ export const Navigation: Component<INavigation> = (props) => {
       {/* Web Menu */}
       <div class="hidden text-lg 2xl:text-xl lowercase lg:flex gap-4 2xl:gap-7 items-center pb-12">
         <a href="/">
-          <img src={roseImg.src} alt="Rose flower" class="w-8 xl:w-6 h-auto" />
+          <img src={roseImg.src} alt="Rose flower" class="w-4 xl:w-6 h-auto" />
         </a>
         <For each={links}>
           {(link) => (

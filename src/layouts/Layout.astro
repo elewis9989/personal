@@ -28,15 +28,15 @@ const { title, description, image, type, date } = Astro.props;
     image={image}
     date={date}
   />
-  <body>
+  <body class="relative">
     <header>
       <Navigation client:load pathname={Astro.url.pathname} />
+      <Image
+        src={graphImg}
+        alt="Three polygons connected"
+        class="absolute md:top-10 md:right-20 top-6 right-5 md:w-16 w-12 h-auto"
+      />
     </header>
-    <Image
-      src={graphImg}
-      alt="Three polygons connected"
-      class="absolute md:top-10 md:right-20 top-6 right-5 w-16 h-auto"
-    />
-    <main class="text-base font-serif"><slot /></main>
+    <main class="text-base font-serif pt-4 md:pt-0"><slot /></main>
   </body>
 </html>
