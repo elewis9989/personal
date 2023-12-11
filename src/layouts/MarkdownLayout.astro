@@ -1,14 +1,14 @@
 ---
-import type { Frontmatter } from "@/pages/writing/index.astro";
 import Layout from "./Layout.astro";
 
 interface Props {
-  frontmatter: Frontmatter;
-  rawContent: () => string;
+  title: string;
+  excerpt: string;
+  ogImage: string;
+  date: Date;
+  minutesRead: string;
 }
-const { frontmatter } = Astro.props;
-const { title, excerpt, ogImage, date } = frontmatter;
-const { minutesRead } = Astro.props.frontmatter;
+const { title, excerpt, ogImage, date, minutesRead } = Astro.props;
 ---
 
 <Layout
@@ -17,52 +17,23 @@ const { minutesRead } = Astro.props.frontmatter;
   image={ogImage}
   type="article"
   date={date}
-  background="bg-white"
-  navColor="text-black"
-  navUnderline="bg-black"
 >
-  <header class="px-1">
-    <h1
-      class="text-[2.5rem] lg:text-8xl uppercase text-center py-4 lg:py-8 font-avenir font-bold"
-    >
-      {title}
-    </h1>
-    <div class="flex items-center gap-2 md:text-lg font-normal text-zinc-500">
-      <div
-        class="flex grow flex-col sm:flex-row sm:items-center sm:justify-between mt-4"
-      >
-        <div>
-          <span>Roze</span> /{" "}
-          <time>
-            {
-              new Date(date).toLocaleDateString("en-us", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              })
-            }
-          </time>
-        </div>
-        <div class="flex items-center gap-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 0 24 24"
-            width="24px"
-            class="hidden sm:inline stroke-purple-300"
-          >
-            <path
-              d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-            ></path>
-            <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"></path>
-          </svg>
-          <span>{minutesRead}</span>
-        </div>
-      </div>
-    </div>
-  </header>
+  <h1 class="text-3xl font-bold pb-4">
+    {title}
+  </h1>
+  <div class="space-x-4 text-sm font-medium">
+    <time
+      >🗓️ {
+        new Date(date).toLocaleDateString("en-us", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })
+      }</time
+    ><span>⏳ {minutesRead}</span>
+  </div>
   <article
-    class="prose max-w-screen-xl md:prose-xl px-1 lg:px-0 lg:mt-8 markdown"
+    class="prose prose-h1:text-2xl max-w-screen-md px-0 lg:mt-8 markdown"
   >
     <slot />
   </article>

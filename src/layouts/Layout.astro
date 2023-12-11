@@ -1,29 +1,22 @@
 ---
 import "@styles/global.css";
 import Head from "@components/Head.astro";
+import "@fontsource-variable/inter";
+import "@fontsource-variable/noto-nastaliq-urdu";
+import "@fontsource-variable/noto-serif";
 import { Navigation } from "@components/navigation/navigation.tsx";
+import { Image } from "astro:assets";
+import graphImg from "../images/graph.svg";
 
 interface Props {
   title: string;
   description: string;
   image?: string;
   type?: string;
-  date?: string;
-  background: string;
-  navColor: string;
-  navUnderline: string;
+  date?: Date;
 }
 
-const {
-  title,
-  description,
-  image,
-  type,
-  date,
-  background,
-  navColor,
-  navUnderline,
-} = Astro.props;
+const { title, description, image, type, date } = Astro.props;
 ---
 
 <!doctype html>
@@ -35,13 +28,15 @@ const {
     image={image}
     date={date}
   />
-  <body class={background}>
-    <Navigation
-      client:load
-      textColor={navColor}
-      underlineColor={navUnderline}
-      pathname={Astro.url.pathname}
+  <body>
+    <header>
+      <Navigation client:load pathname={Astro.url.pathname} />
+    </header>
+    <Image
+      src={graphImg}
+      alt="Three polygons connected"
+      class="absolute md:top-10 md:right-20 top-6 right-5 w-16 h-auto"
     />
-    <main><slot /></main>
+    <main class="text-base font-serif"><slot /></main>
   </body>
 </html>

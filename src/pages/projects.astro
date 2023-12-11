@@ -1,24 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import "@styles/projects.css";
-import { ProjectList } from "@components/projects";
+import ProjectCard from "@components/ProjectCard.astro";
+import projects from "@data/projects.json";
 ---
 
-<Layout
-  title="ROZE | PROJECTS"
-  description="Coding projects"
-  background="bg-myrtle-green"
-  navColor="text-white"
-  navUnderline="bg-white"
->
-  <header>
-    <h1
-      class="text-white text-5xl lg:text-8xl uppercase text-center py-4 lg:py-8 font-avenir font-bold"
-    >
-      Featured Projects
-    </h1>
-  </header>
-  <section class="flex flex-col xl:pt-14 items-center w-full">
-    <ProjectList client:load />
-  </section>
+<Layout title="ROZE | PROJECTS" description="Coding projects">
+  <h1 class="text-3xl font-bold pb-10">Projects.</h1>
+  <ul class="space-y-6">
+    {
+      projects.map(({ title, url, description }) => (
+        <li>
+          <ProjectCard url={url} title={title} description={description} />
+        </li>
+      ))
+    }
+  </ul>
 </Layout>

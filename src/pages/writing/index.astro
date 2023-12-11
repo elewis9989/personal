@@ -1,49 +1,38 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import BlogCard from "@components/BlogCard.astro";
+import { getCollection } from "astro:content";
 
-export interface Frontmatter {
-  title: string;
-  excerpt: string;
-  coverImage: string;
-  ogImage: string;
-  date: string;
-  minutesRead: number;
-}
-const allPosts = await Astro.glob<Frontmatter>("./*.mdx");
+const allPosts = await getCollection("blog");
 
 //sort by date
 allPosts.sort((a, b) => {
-  const dateA = new Date(a.frontmatter.date);
-  const dateB = new Date(b.frontmatter.date);
+  const dateA = new Date(a.data.date);
+  const dateB = new Date(b.data.date);
   return dateB.getTime() - dateA.getTime();
 });
 ---
 
-<Layout
-  title="ROZE | WRITING"
-  description="Blog"
-  background="bg-white"
-  navColor="text-black"
-  navUnderline="bg-black"
->
-  <header>
-    <h1
-      class="text-5xl lg:text-8xl uppercase text-center py-4 lg:py-8 font-avenir font-bold"
-    >
-      Blog
-    </h1>
-  </header>
-  <section class="flex justify-center items-center pt-14">
-    <ul
-      class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-    >
+<Layout title="ROZE | WRITING" description="Blog">
+  <h1 class="text-3xl font-bold pb-10">Writing.</h1>
+  <section>
+    <ul class="space-y-6">
       {
-        allPosts.map((post) => (
-          <li class="max-w-md">
-            <BlogCard url={post.url ?? "/404"} frontmatter={post.frontmatter} />
-          </li>
-        ))
+        allPosts.map(async (post) => {
+          const { remarkPluginFrontmatter } = await post.render();
+
+          return (
+            <li>
+              <BlogCard
+                url={`/writing/${post.slug}`}
+                title={post.data.title}
+                excerpt={post.data.excerpt}
+                date={post.data.date}
+                minutesRead={remarkPluginFrontmatter.minutesRead}
+              />
+            </li>
+          );
+        })
       }
     </ul>
   </section>
