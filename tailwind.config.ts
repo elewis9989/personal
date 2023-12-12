@@ -29,7 +29,7 @@ module.exports = {
         serif: ["Noto Serif Variable", "sans-serif"],
       },
       colors: {
-        chalk: "#FBFFFF",
+        paper: "#f1f1ef",
         "dim-gray": "#686963",
       },
     },
