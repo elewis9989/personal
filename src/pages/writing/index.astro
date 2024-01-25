@@ -20,6 +20,7 @@ allPosts.sort((a, b) => {
       {
         allPosts.map(async (post) => {
           const { remarkPluginFrontmatter } = await post.render();
+          if (post.data.isDraft) return null;
 
           return (
             <li>
