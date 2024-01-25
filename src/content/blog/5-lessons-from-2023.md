@@ -1,7 +1,7 @@
 ---
 title: 5 Lessons from 2023
 excerpt: These were some of the best things I learned in 2023
-date: 2023-12-29
+date: 2024-01-25
 isDraft: false
 ---
 
