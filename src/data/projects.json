@@ -1,5 +1,28 @@
 [
   {
+    "title": "Bookish",
+    "description": "Bookish is a semantic search engine that finds books based on the semantic meaning of your query. Typical AI apps make LLMs that UI, but I was interested in other ways of using LLMs to personalize content.",
+    "year": "2024",
+    "url": "https://github.com/third-systems/book-search",
+    "tags": [
+      "AI",
+      "LLM",
+      "NLP",
+      "React",
+      "NextJS",
+      "Python",
+      "Hugging Face",
+      "LangChain"
+    ]
+  },
+  {
+    "title": "Grep Clone",
+    "description": "I built a simple version of grep from scratch, a command-line utility for search files. It was primarily made to understand the concurrency model in Go",
+    "year": "2024",
+    "url": "https://github.com/itsRoze/go-grep",
+    "tags": ["Go", "Grep"]
+  },
+  {
     "title": "Modal",
     "description": "My first SaaS app. I never found a great productivity manager, so I built an opinionated one. Modal was designed with simplicity for the everyday user",
     "year": "2023-Present",
