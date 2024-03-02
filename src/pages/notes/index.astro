@@ -1,0 +1,42 @@
+---
+import Layout from "@layouts/Layout.astro";
+import NoteCard from "@components/NoteCard.astro";
+import { getCollection } from "astro:content";
+
+const entries = await getCollection("notes");
+
+//sort by date
+entries.sort((a, b) => {
+  const dateA = new Date(a.data.date);
+  const dateB = new Date(b.data.date);
+  return dateB.getTime() - dateA.getTime();
+});
+---
+
+<Layout title="ROZE | NOTES" description="Notes">
+  <h1 class="text-3xl font-bold pb-10">Notes.</h1>
+  <section>
+    <h3 class="text-lg italic pb-2">
+      A random collection of small notes, bug fixes, etc
+    </h3>
+  </section>
+  <section>
+    <ul class="space-y-6">
+      {
+        entries.map(async (note) => {
+          if (note.data.isDraft) return null;
+
+          return (
+            <li>
+              <NoteCard
+                url={`/notes/${note.slug}`}
+                title={note.data.title}
+                date={note.data.date}
+              />
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</Layout>

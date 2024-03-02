@@ -2,19 +2,16 @@
 interface Props {
   url: string;
   title: string;
-  excerpt: string;
   date: Date;
-  minutesRead: string;
 }
 
-const { url, title, excerpt, date, minutesRead } = Astro.props;
+const { title, date, url } = Astro.props;
 ---
 
 <div class="space-y-2">
   <a href={url} class="hover:underline hover:underline-offset-8 text-xl"
     >{title}</a
   >
-  <p class="font-light">{excerpt}</p>
   <div class="space-x-4 text-sm font-medium">
     <time
       >🗓️ {
@@ -24,6 +21,6 @@ const { url, title, excerpt, date, minutesRead } = Astro.props;
           day: "numeric",
         })
       }</time
-    ><span>⏳ {minutesRead}</span>
+    >
   </div>
 </div>

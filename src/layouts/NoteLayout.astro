@@ -1,0 +1,31 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+  title: string;
+  date: Date;
+}
+const { title, date } = Astro.props;
+---
+
+<Layout title={title} description={title} type="article" date={date}>
+  <h1 class="text-3xl font-bold pb-4">
+    {title}
+  </h1>
+  <div class="space-x-4 text-sm font-medium">
+    <time
+      >🗓️ {
+        new Date(date).toLocaleDateString("en-us", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })
+      }</time
+    >
+    <article
+      class="prose prose-h1:text-2xl max-w-screen-md px-0 lg:mt-8 mt-4 markdown"
+    >
+      <slot />
+    </article>
+  </div>
+</Layout>
