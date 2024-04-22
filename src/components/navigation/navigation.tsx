@@ -65,7 +65,7 @@ export const Navigation: Component<INavigation> = (props) => {
         </For>
       </Drawer>
       {/* Web Menu */}
-      <div class="hidden text-lg 2xl:text-xl lowercase lg:flex gap-4 2xl:gap-7 items-center pb-12">
+      <div class="hidden text-lg 2xl:text-xl lowercase lg:flex gap-4 2xl:gap-7 items-center">
         <a href="/">
           <img src={roseImg.src} alt="Rose flower" class="w-4 xl:w-6 h-auto" />
         </a>
