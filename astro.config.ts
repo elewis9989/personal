@@ -6,14 +6,16 @@ import { remarkReadingTime } from "./plugins/remark-reading-time.mjs";
 
 import solidJs from "@astrojs/solid-js";
 import expressiveCode from "astro-expressive-code";
-import vercel from "@astrojs/vercel/serverless";
+import vercelStatic from "@astrojs/vercel/static";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://roze.dev",
-  output: "server",
-  adapter: vercel({
-    webAnalytics: { enabled: true },
+  output: "static",
+  adapter: vercelStatic({
+    webAnalytics: {
+      enabled: true,
+    },
   }),
   integrations: [tailwind(), solidJs(), expressiveCode(), mdx()],
   markdown: {

@@ -12,8 +12,6 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
-
-export const prerender = true;
 ---
 
 <NoteLayout title={entry.data.title} date={entry.data.date}>
