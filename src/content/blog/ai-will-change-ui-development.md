@@ -4,7 +4,6 @@ excerpt: I outline a possibility on how AI can dramatically change how we do fro
 date: 2024-04-30
 isDraft: true
 ---
-
 ---
 
 Hello reader,

@@ -1,0 +1,15 @@
+---
+interface Props {
+  title: string;
+  author: string;
+  url: string;
+  rating?: string;
+}
+const { title, author, url, rating } = Astro.props;
+---
+
+<a target="_blank" href={url} class="hover:underline font-medium">
+  {title}
+</a>
+<p class="">{author}</p>
+{rating ? <span class="text-sm">Rating: {rating}</span> : null}
