@@ -4,7 +4,6 @@ import mdx from "@astrojs/mdx";
 import remarkSmartypants from "remark-smartypants";
 import { remarkReadingTime } from "./plugins/remark-reading-time.mjs";
 
-import solidJs from "@astrojs/solid-js";
 import expressiveCode from "astro-expressive-code";
 import vercelStatic from "@astrojs/vercel/static";
 
@@ -17,7 +16,7 @@ export default defineConfig({
       enabled: true,
     },
   }),
-  integrations: [tailwind(), solidJs(), expressiveCode(), mdx()],
+  integrations: [tailwind(), expressiveCode(), mdx()],
   markdown: {
     remarkPlugins: [remarkSmartypants, remarkReadingTime],
   },

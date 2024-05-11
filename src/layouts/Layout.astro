@@ -5,7 +5,7 @@ import Head from "@components/Head.astro";
 import "@fontsource-variable/inter";
 import "@fontsource-variable/noto-nastaliq-urdu";
 import "@fontsource-variable/noto-serif";
-import { Navigation } from "@components/navigation/navigation.tsx";
+import Nav from "@components/navigation/Nav.astro";
 import { Image } from "astro:assets";
 import graphImg from "../images/graph.svg";
 
@@ -32,7 +32,7 @@ const { title, description, image, type, date } = Astro.props;
   <body class="relative">
     <SpeedInsights />
     <header class="flex items-center md:pb-8 justify-between">
-      <Navigation client:load pathname={Astro.url.pathname} />
+      <Nav />
       <Image
         src={graphImg}
         alt="Three polygons connected"

@@ -1,0 +1,47 @@
+---
+import { cn } from "@/utils/cn";
+import roseImg from "../../images/rose.svg";
+import Drawer from "./Drawer.astro";
+
+const links = [
+  { name: "Projects", href: "/projects" },
+  { name: "Writing", href: "/writing" },
+  { name: "Notes", href: "/notes" },
+  { name: "Reading", href: "/reading" },
+  { name: "Resume", href: "/resume.pdf" },
+  { name: "RSS", href: "/rss.xml" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="lg:hidden">
+  <Drawer links={links} />
+</nav>
+
+<nav class="hidden lg:flex gap-4 2xl:gap-7 items-center text-lg 2xl:text-xl">
+  <a href="/">
+    <img src={roseImg.src} alt="Rose flower" class="w-4 xl:w-6 h-auto" />
+  </a>
+  {
+    links.map((link) => (
+      <a
+        href={link.href}
+        target={
+          link.name === "Resume" || link.name === "RSS" ? "_blank" : "_self"
+        }
+        class={cn({
+          "underline underline-offset-[8px]":
+            currentPath.includes(link.href) && link.href !== "/",
+          "group transition duration-300 hover:underline underline-offset-[8px]":
+            currentPath.includes(link.href),
+        })}
+      >
+        {link.name}
+        <span
+          class={`block max-w-0 group-hover:max-w-full transition-all duration-500 h-1`}
+        />
+      </a>
+    ))
+  }
+</nav>

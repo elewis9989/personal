@@ -1,0 +1,82 @@
+---
+import roseImg from "../../images/rose.svg";
+
+interface Props {
+  links: Array<{
+    name: string;
+    href: string;
+  }>;
+}
+
+const currentPath = Astro.url.pathname;
+
+const { links } = Astro.props;
+---
+
+<div class="flex">
+  <input type="checkbox" id="drawer-toggle" class="relative sr-only peer" />
+  <label for="drawer-toggle" class="absolute top-4 left-2 inline-block z-50">
+    <span class="sr-only">Toggle sidebar</span>
+    <div class="space-y-2">
+      <div
+        class="w-8 bg-black h-0.5 rounded-full transition ease-in-out duration-500"
+      >
+      </div>
+      <div
+        class="w-8 bg-black h-0.5 rounded-full transition ease-in-out duration-500"
+      >
+      </div>
+      <div
+        class="w-8 bg-black h-0.5 rounded-full transition ease-in-out duration-500"
+      >
+      </div>
+    </div>
+  </label>
+
+  <div
+    class="fixed top-0 left-0 z-20 w-64 h-full transition-all duration-500 transform -translate-x-full peer-checked:translate-x-0 bg-white/75 backdrop-blur"
+  >
+    <div
+      class="flex flex-col ml-7 md:ml-9 pt-20 text-xl font-light tracking-wider gap-8"
+    >
+      <a href="/">
+        <img src={roseImg.src} alt="Rose flower" class="w-4 xl:w-6 h-auto" />
+      </a>
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class={`relative cursor-pointer ${currentPath === link.href ? "underline-bar" : ""}`}
+          >
+            {link.name}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  #drawer-toggle:checked + label > div > div:first-of-type {
+    transform: rotate(-35deg) translateY(0.75rem) translateX(0rem);
+  }
+  #drawer-toggle:checked + label > div > div:nth-of-type(2) {
+    opacity: 0;
+  }
+
+  #drawer-toggle:checked + label > div > div:nth-of-type(3) {
+    /* Example transformation for the third div */
+    transform: rotate(35deg) translateY(-0.75rem);
+  }
+
+  a.underline-bar::after {
+    content: "";
+    position: absolute;
+    bottom: -0.2em;
+    left: -0.5rem;
+    width: 70%;
+    height: 0.1em;
+    background-color: black;
+    opacity: 1;
+  }
+</style>
