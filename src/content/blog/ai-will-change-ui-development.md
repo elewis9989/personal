@@ -1,8 +1,8 @@
 ---
 title: AI Will Change UI Development
-excerpt: I outline a possibility on how AI can dramatically change how we do frontend development
+excerpt: I outline a possibility on how AI can dramatically change how we do frontend development through generative UI
 date: 2024-04-30
-isDraft: true
+isDraft: false
 ---
 ---
 
@@ -12,17 +12,17 @@ I want to make a prediction, or rather define a possibility: UI development will
 
 ## New Hardware & The App-less Ecosystem
 
-When Humane AI delivered its eagerly anticipated and heavily publicized launch, it presented many distinctive features—though most were met with criticism. But, perhaps the most intriguing aspect to me was the lack of apps. The founders argued that because of AI, you don't need apps. Initially, I found this perplexing—wouldn't it be a very limiting experience without apps? What if developers outside the company wanted to build something for the device? How would they deliver it without an app platform? A few months later, Rabbit echoed similar sentiments at CES 2024 with its R1 device. Much of the criticism it faced was summed up by a common refrain: "Why is this not just an app on my phone?" This raises an even more interesting question: why are so many AI companies venturing into new hardware?
+When Humane AI delivered its eagerly anticipated and heavily publicized launch, it presented many distinctive features — most were met with criticism. But, the most intriguing aspect to me was the lack of apps. The founders argued that because of AI, you don't need apps. Initially, I found this perplexing—wouldn't it be a very limiting experience without apps? What if developers outside the company wanted to build something for the device? How would they deliver it without an app platform? A few months later, Rabbit echoed similar sentiments at CES 2024 with its R1 device. Much of the criticism it faced was summed up by a common refrain: "Why is this not just an app on my phone?" This raises an even more interesting question: why are so many AI companies venturing into new hardware?
 
 The answer: access to richer inputs. An AI that can tap into your location, the surrounding noises, voices, visuals, and more can offer significantly better guidance. While your phone contains many of these sensors, it often lacks real-time environmental context — the _ambience factor_ — as it usually remains in your pocket, requiring manual operation of its camera and microphone. This has spurred the development of **wearable computers** — be it necklaces, glasses, or even pins — designed to capture information seamlessly and effortlessly without user initiation.
 
 The ability to capture a categorically larger variety of inputs (audio, vision, etc.) not only enhances an AI's capabilities but also allows it to display information in a more contextually specific way. Imagine you've been wearing a Humane AI pin for a few months while on a new diet and gym regimen. This device, having recorded all your meals and workouts, could let you ask for a display of your recent exercise data or even generate a graph showing your progress. What if you start struggling with motivation and need a gym buddy? Maybe the AI could generate profiles of others nearby for you to select a potential gym buddy.
 
-This UI would not be hard-coded but dynamic, generated and rendered based on user queries. Consider how many traditional apps could be replaced if an AI had access to more data and could dynamically generate UIs. Hence, the app-less economy.
+This UI would not be hard-coded but dynamic, generated and rendered based on user queries — generative UI. Consider how many traditional apps could be replaced if an AI had access to more data and could dynamically generate UIs. Hence, the app-less economy.
 
 ## Services vs UI-Centric Apps
 
-There's an important distinction I'd like to draw concerning apps: there are those where the UI merely serves as a vehicle to deliver a service, and then there are those where the UI itself is the main attraction. Consider Spotify. We primarily use the app to listen to music, which is the service Spotify provides. Here, the UI is designed to facilitate access to this music, featuring functionalities like search, playlists, and recommendations. In contrast, take Instagram. The platform is highly visual; we use the app to view photos and videos, and interact with them through likes and comments. Here, the UI doesn't just support the service — it _is_ the service, as the visual and interactive elements are central to the user experience.
+There's an important distinction I'd like to draw concerning apps: there are those where the UI merely serves as a vehicle to deliver a service, and then there are those where the UI itself is the main attraction. Consider Spotify. We primarily use the app to listen to music of course, which is the service Spotify provides. Here, the UI is designed to facilitate access to this music, featuring functionalities like search, playlists, and recommendations. Now in contrast, take Instagram. The platform is highly visual; we use the app to view photos and videos, and interact with them through likes and comments. Here, the UI doesn't just support the service — it _is_ the service, as the visual and interactive elements are central to the user experience.
 
 As we've discussed, AI could dynamically generate UI. It's conceivable that an AI could interface with Spotify's APIs to dynamically generate a user-specific UI. Imagine you're in a mall, and you hear a song you like playing in a store. You could ask your AI assistant to identify the song using a Shazam-like feature, add it to your library, and even generate a UI on your phone to show all your library songs while you're on the subway home.
 
@@ -32,7 +32,7 @@ For companies like Spotify and Tinder/Hinge, the shift towards AI integration wo
 
 ## What becomes of frontend
 
-In a future where AI can dynamically generate UIs, one might wonder if frontend development will become obsolete, particularly in companies like Spotify or Tinder that focus more on backend processes. However, replacing human workers with AI in this area would be a grave mistake.
+Generative UI is already available in some fashion with [Vercel's v0](https://v0.dev/) and [PureCode AI](https://purecode.ai/) having the ability for users to describe a piece of UI they'd like and AI can generate code. With this emerging technology, one might wonder if frontend development will become obsolete, particularly in companies like Spotify or Tinder that focus more on backend processes. However, replacing human workers with AI in this area would be a grave mistake.
 
 While AI can generate code, it often lacks innate creativity and may merely regurgitate existing human designs rather than produce genuine innovations. The evolving role of AI should transform, not replace, frontend development practices. AI might produce generic interfaces on its own, but these limitations can be addressed with the creative input of frontend developers.
 
@@ -48,4 +48,4 @@ Backend developers might shift their focus toward developing sophisticated APIs 
 
 ## Conclusion
 
-As we look towards a future reshaped by AI, the landscape of UI development is poised for profound transformation. The advent of AI-driven interfaces promises not only a shift from traditional apps to more dynamic, context-aware systems but also redefines the roles of frontend and backend developers. By embracing AI's capabilities to dynamically generate user interfaces, companies can leverage richer inputs and more personalized interactions, leading to an app-less economy where the boundary between service and interface blurs. But remember, this is less a prediction and more me defining a possibility.
+The landscape of UI development is poised for profound transformation, though that's common in the frontend world as expectations from users only grow. But the advent of AI-driven interfaces promises not only a shift from traditional apps to more dynamic, context-aware systems but also redefines the roles of frontend and backend developers. I'm personally looking forward to ways we can leverage richer inputs and more personalized interactions, leading to an app-less economy where the boundary between service and interface blurs. Of course, only time will tell whether this possibility becomes a reality.
