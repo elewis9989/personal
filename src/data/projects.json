@@ -1,5 +1,12 @@
 [
   {
+    "title": "4RL Digital Icebreaker",
+    "description": "An early prototype for 4RL that could be used in person for events, conferences, and meetups.",
+    "year": "2024",
+    "url": "https://beta.4rlapp.com/",
+    "tags": ["NextJS", "AWS", "Tailwind CSS"]
+  },
+  {
     "title": "Dex",
     "description": "Dex is a personal contacts manager that I built so that I could keep in touch with interesting people I would meet at networking events",
     "year": "2024",
