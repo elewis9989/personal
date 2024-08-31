@@ -8,7 +8,6 @@ const links = [
   { name: "Writing", href: "/writing" },
   { name: "Notes", href: "/notes" },
   { name: "Reading", href: "/reading" },
-  { name: "Resume", href: "/resume.pdf" },
   { name: "RSS", href: "/rss.xml" },
 ];
 
@@ -28,7 +27,7 @@ const currentPath = Astro.url.pathname;
       <a
         href={link.href}
         target={
-          link.name === "Resume" || link.name === "RSS" ? "_blank" : "_self"
+          link.name === "RSS" ? "_blank" : "_self"
         }
         class={cn({
           "underline underline-offset-[8px]":
